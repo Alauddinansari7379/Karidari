@@ -10,9 +10,9 @@ import com.example.tlismimoti.Helper.AppProgressBar
 import com.example.tlismimoti.Helper.myToast
 import com.example.tlismimoti.R
 import com.example.tlismimoti.databinding.FragmentPastBinding
-import com.example.tlismimoti.order.adapter.AdapterOrder
+import com.example.tlismimoti.order.adapter.AdapterOrderCompleted
 import com.example.tlismimoti.order.model.DataX
-import com.example.tlismimoti.order.model.ModelOrder
+import com.example.tlismimoti.order.model.ModelPendingOrder.ModelOrderPending
 import com.example.tlismimoti.retrofit.ApiClient
 import com.example.tlismimoti.sharedpreferences.SessionManager
 import retrofit2.Call
@@ -24,6 +24,7 @@ class FragmentPast : Fragment() {
     lateinit var binding: FragmentPastBinding
     lateinit var sessionManager: SessionManager
     var count = 0
+    var count1 = 0
     var orderData = 0
     var completed = ArrayList<DataX>()
     val pending = ArrayList<DataX>()
@@ -41,21 +42,20 @@ class FragmentPast : Fragment() {
         sessionManager = SessionManager(requireContext())
         if (sessionManager.userEmail!!.isNotEmpty()) {
             apiCallAllOrderCom()
-            apiCallAllOrderCan()
 
         }
     }
 
     private fun apiCallAllOrderCom() {
         // AppProgressBar.showLoaderDialog(requireContext())
-        ApiClient.apiService.orders(
+        ApiClient.apiService.ordersCompleted(
             sessionManager.authToken!!,
             sessionManager.userEmail,
             "completed"
         )
-            .enqueue(object : Callback<ModelOrder> {
+            .enqueue(object : Callback<ModelOrderPending> {
                 override fun onResponse(
-                    call: Call<ModelOrder>, response: Response<ModelOrder>
+                    call: Call<ModelOrderPending>, response: Response<ModelOrderPending>
                 ) {
                     try {
                         if (response.code() == 500) {
@@ -66,11 +66,6 @@ class FragmentPast : Fragment() {
                             myToast(requireActivity(), "Something went wrong")
                             AppProgressBar.hideLoaderDialog()
 
-                        }else if (response.body()!!.data.total_amount==0) {
-                            binding.tvNoDtaFound.visibility = View.VISIBLE
-                            //   binding.shimmer.visibility = View.GONE
-                            AppProgressBar.hideLoaderDialog()
-
                         } else {
 //                            for (i in response.body()!!.data.info) {
 //                                when (i.status) {
@@ -78,20 +73,20 @@ class FragmentPast : Fragment() {
 //                                    "3" -> canceled.add(i)
 //                                }
 //                            }
-                            completed= response.body()!!.data.info as ArrayList<DataX>
 
-                            Log.e("completed", completed.toString())
-                            Log.e("canceled", canceled.toString())
-                            binding.itemQtyDel.text = completed.size.toString() + " items"
+                            binding.itemQty.text = response.body()!!.data.info.size.toString() + " items"
                             binding.totalPrice.text = "${sessionManager.currency}" + response.body()!!.data.total_amount
 
                             binding!!.recyclerViewDel.adapter =
                                 activity?.let {
-                                    AdapterOrder(
-                                        it, completed,
+                                    AdapterOrderCompleted(
+                                        it, response.body()!!.data.info,
                                     )
                                 }
-
+                            if (response.body()!!.data.info.size == 0) {
+                                binding.cardDel.visibility = View.GONE
+                            }
+                            apiCallAllOrderCan()
                             AppProgressBar.hideLoaderDialog()
                         }
                     } catch (e: Exception) {
@@ -99,26 +94,18 @@ class FragmentPast : Fragment() {
                     }
                 }
 
-                override fun onFailure(call: Call<ModelOrder>, t: Throwable) {
+                override fun onFailure(call: Call<ModelOrderPending>, t: Throwable) {
                     //myToast(requireActivity(), "Something went wrong")
                     count++
-                    if (count <= 2) {
+                    if (count <= 5) {
                         Log.e("count", count.toString())
                         apiCallAllOrderCom()
                     } else {
-                        if (canceled.isEmpty() && completed.isEmpty()){
-                            binding.tvNoDtaFound.visibility=View.VISIBLE
+                           //  binding.tvNoDtaFound.visibility=View.VISIBLE
                             binding.cardDel.visibility=View.GONE
-                            binding.cardCan.visibility=View.GONE
-                        }
-                        if (canceled.isEmpty()){
-                            binding.cardCan.visibility=View.GONE
-                        }
-
-                        if (completed.isEmpty()){
-                            binding.cardDel.visibility=View.GONE
-                        }
+                           // binding.cardCan.visibility=View.GONE
                         AppProgressBar.hideLoaderDialog()
+                        Log.e("completed", t.toString())
 
                     }
                     AppProgressBar.hideLoaderDialog()
@@ -131,14 +118,14 @@ class FragmentPast : Fragment() {
 
     private fun apiCallAllOrderCan() {
         // AppProgressBar.showLoaderDialog(requireContext())
-        ApiClient.apiService.orders(
+        ApiClient.apiService.ordersCompleted(
             sessionManager.authToken!!,
             sessionManager.userEmail,
             "canceled"
         )
-            .enqueue(object : Callback<ModelOrder> {
+            .enqueue(object : Callback<ModelOrderPending> {
                 override fun onResponse(
-                    call: Call<ModelOrder>, response: Response<ModelOrder>
+                    call: Call<ModelOrderPending>, response: Response<ModelOrderPending>
                 ) {
                     try {
                         if (response.code() == 500) {
@@ -150,11 +137,13 @@ class FragmentPast : Fragment() {
                             AppProgressBar.hideLoaderDialog()
 
                         }else if (response.body()!!.data.total_amount==0) {
-                             binding.tvNoDtaFound.visibility = View.VISIBLE
+                           //  binding.tvNoDtaFound.visibility = View.VISIBLE
                             //   binding.shimmer.visibility = View.GONE
                             AppProgressBar.hideLoaderDialog()
+                            binding.cardCan.visibility = View.GONE
 
                         }else {
+                            count1=0
  //                             val canceled = ArrayList<Info>()
 //                            // mainData = response.body()!!.data.posts.data
 //                            for (i in response.body()!!.data.info) {
@@ -167,26 +156,17 @@ class FragmentPast : Fragment() {
 //                            Log.e("completed", completed.toString())
 //                             Log.e("canceled", canceled.toString())
 
-                            canceled= response.body()!!.data.info as ArrayList<DataX>
-                            binding.itemQty.text = canceled.size.toString() + " items"
+                            binding.itemQty.text = response.body()!!.data.info.size.toString() + " items"
                             binding.totalPriceCan.text = "${sessionManager.currency}"  + response.body()!!.data.total_amount
                             binding!!.recyclerViewCancle.adapter =
                                 activity?.let {
-                                    AdapterOrder(
-                                        it, canceled,
+                                    AdapterOrderCompleted(
+                                        it, response.body()!!.data.info,
                                     )
                                 }
-                            if (canceled.isEmpty() && completed.isEmpty()){
-                                binding.tvNoDtaFound.visibility=View.VISIBLE
-                                binding.cardDel.visibility=View.GONE
-                                binding.cardCan.visibility=View.GONE
-                            }
-                            if (canceled.isEmpty()){
-                                 binding.cardCan.visibility=View.GONE
-                            }
-
-                            if (completed.isEmpty()){
-                                 binding.cardDel.visibility=View.GONE
+                            if (response.body()!!.data.info.size == 0) {
+                              //  binding.tvNoDtaFound.visibility=View.VISIBLE
+                                binding.cardCan.visibility = View.GONE
                             }
 //                            binding.shimmer.visibility = View.GONE
 //
@@ -217,30 +197,24 @@ class FragmentPast : Fragment() {
                         }
                     } catch (e: Exception) {
                         e.printStackTrace()
+                        binding.cardCan.visibility=View.GONE
+
                     }
                 }
 
-                override fun onFailure(call: Call<ModelOrder>, t: Throwable) {
+                override fun onFailure(call: Call<ModelOrderPending>, t: Throwable) {
                     //myToast(requireActivity(), "Something went wrong")
-                    count++
-                    if (count <= 5) {
-                        Log.e("count", count.toString())
+                    count1++
+                    if (count1 <= 5) {
+                        Log.e("count", count1.toString())
                         apiCallAllOrderCan()
                     } else {
-                        count=0
-                        if (canceled.isEmpty() && completed.isEmpty()){
-                            binding.tvNoDtaFound.visibility=View.VISIBLE
-                            binding.cardDel.visibility=View.GONE
-                            binding.cardCan.visibility=View.GONE
-                        }
-                        if (canceled.isEmpty()){
-                            binding.cardCan.visibility=View.GONE
-                        }
+                        count1=0
+                       // binding.tvNoDtaFound.visibility = View.VISIBLE
+                             binding.cardCan.visibility=View.GONE
+                        myToast(requireActivity(), t.message.toString())
+                        //Log.e("completed", t.toString())
 
-                        if (completed.isEmpty()){
-                            binding.cardDel.visibility=View.GONE
-                        }
-                       // myToast(requireActivity(), t.message.toString())
                         AppProgressBar.hideLoaderDialog()
 
                     }
