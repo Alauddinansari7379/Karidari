@@ -2,6 +2,7 @@ package com.example.tlismimoti.setting
 
 import android.app.Dialog
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -40,6 +41,8 @@ class Settings : AppCompatActivity() {
             apiCallGetSetting()
         }
 
+
+
         with(binding) {
             cardChanePass.setOnClickListener {
                 if (sessionManager.authTokenUser!!.isNotEmpty()){
@@ -48,6 +51,13 @@ class Settings : AppCompatActivity() {
             }
             imgBack.setOnClickListener {
                 onBackPressed()
+            }
+
+            cardTerm.setOnClickListener {
+                val intent = Intent(Intent.ACTION_VIEW).apply {
+                    data = Uri.parse("https://karidari.com/page/privacy/1982")
+                }
+                context.startActivity(intent)
             }
             btnSignOut.setOnClickListener {
                 if (sessionManager.authTokenUser!!.isNotEmpty()) {

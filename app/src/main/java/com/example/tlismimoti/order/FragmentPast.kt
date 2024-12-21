@@ -74,7 +74,7 @@ class FragmentPast : Fragment() {
 //                                }
 //                            }
 
-                            binding.itemQty.text = response.body()!!.data.info.size.toString() + " items"
+                            binding.itemQtyDel.text = response.body()!!.data.info.size.toString() + " items"
                             binding.totalPrice.text = "${sessionManager.currency}" + response.body()!!.data.total_amount
 
                             binding!!.recyclerViewDel.adapter =
