@@ -4,7 +4,6 @@ package com.example.tlismimoti.retrofit
 import com.amtech.mehfeel.category.model.ModelCatWithId.ModelCatWithId
 import com.amtech.mehfeel.home.model.modelTop.ModelNewArraivals
 import com.example.tlismimoti.cart.model.ModelActiveGateway.ModelActiveGateWays
-import com.example.tlismimoti.cart.model.ModelAddtoCart
 import com.example.tlismimoti.cart.model.ModelOrderCreate
 import com.example.tlismimoti.cart.model.ModelPayment.ModelPayment
 import com.example.tlismimoti.cart.model.ModelState.ModelState
@@ -20,11 +19,16 @@ import com.example.tlismimoti.login.model.ModelLogin
 import com.example.tlismimoti.login.model.ModelUserSignUp
 import com.example.tlismimoti.mainActivity.ModelDestoryCart
 import com.example.tlismimoti.order.model.ModelOrder
+import com.example.tlismimoti.order.model.ModelPendingOrder.ModelOrderPending
 import com.example.tlismimoti.order.model.modelOrderDet.ModelOrderDetail
 import com.example.tlismimoti.setting.model.ModelSetting
 import com.example.tlismimoti.wishlist.model.ModelWishlist
 import retrofit2.Call
-import retrofit2.http.*
+import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.Headers
+import retrofit2.http.POST
+import retrofit2.http.Query
 
 
 interface ApiInterface {
@@ -170,6 +174,14 @@ interface ApiInterface {
         @Query("email")email:String?,
         @Query("slug")slug:String?
     ): Call<ModelOrder>
+
+    @Headers("content-type: application/json")
+    @POST("showlist")
+    fun ordersCompleted(
+        @Header("Authorization") authHeader: String?,
+        @Query("email")email:String?,
+        @Query("slug")slug:String?
+    ): Call<ModelOrderPending>
 
     @Headers("content-type: application/json")
     @POST("usettings")

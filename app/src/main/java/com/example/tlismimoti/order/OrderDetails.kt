@@ -73,7 +73,7 @@ class OrderDetails : AppCompatActivity() {
                                         binding.tvOrderStatues.text = "Cancel"
                                         binding.tvOrderStatuesRec.text = "Cancel"
                                     }
-                                    "delivered" -> {
+                                    "completed" -> {
                                         binding.tvOrderStatues.text = "Completed"
                                         binding.tvOrderStatuesRec.text = "Completed"
                                     }
