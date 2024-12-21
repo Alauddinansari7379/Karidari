@@ -58,6 +58,7 @@ class OrderDetails : AppCompatActivity() {
                             myToast(context, "Something went wrong")
                             AppProgressBar.hideLoaderDialog()
 
+
                         } else {
                             count=0
                              val responseData = response.body()?.data?.info
