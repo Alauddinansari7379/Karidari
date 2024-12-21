@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/fragment_Home">
+
+    <fragment
+        android:id="@+id/fragment_Home"
+        android:name="com.example.tlismimoti.home.activity.HomeFragment"
+        tools:layout="@layout/fragment_home"
+        android:label="Home" />
+    <fragment
+        android:id="@+id/fragment_categories"
+        tools:layout="@layout/fragment_categories"
+        android:name="com.example.tlismimoti.categories.CategoriesFragment"
+        android:label="News" />
+    <fragment
+        android:id="@+id/fragment_account"
+        tools:layout="@layout/fragment_account"
+        android:name="com.example.tlismimoti.account.AccountFragment"
+        android:label="Profile" />
+    <fragment
+        android:id="@+id/fragment_cart"
+        android:name="com.example.tlismimoti.cart.CartFragment"
+        tools:layout="@layout/fragment_cart"
+        android:label="fragment_booking2"
+         />
+
+
+</navigation>

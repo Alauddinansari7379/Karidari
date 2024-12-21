@@ -1,0 +1,41 @@
+package com.amtech.mehfeel.home.model.modelTop
+
+import com.example.tlismimoti.listing.model.Category
+
+data class GetTrendingProduct(
+    val affil_id: Any,
+    val affiliate: Any,
+    val answer1: Any,
+    val answer2: Any,
+    val answer3: Any,
+    val answer4: Any,
+    val answer5: Any,
+    val brands: List<Any>,
+    val categories: List<Category>,
+    val content: Content,
+    val created_at: String,
+    val featured: Int,
+    val id: Int,
+    val is_admin: Int,
+    val medias: List<Media>,
+    val options: List<Any>,
+    val price: Price,
+    val prvideo: Any,
+    val question1: Any,
+    val question2: Any,
+    val question3: Any,
+    val question4: Any,
+    val question5: Any,
+    val reviews_count: Int,
+    val seo: Seo,
+    val service_location: Any,
+    val service_type: Any,
+    val slug: String,
+    val status: Int,
+    val stock: Stock,
+    val title: String,
+    val type: String,
+    val updated_at: String,
+    val user_id: Int,
+    val youtube_link: Any
+)
