@@ -28,6 +28,7 @@ class AdapterOrderDetail(
         return list.size
     }
 
+
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         sessionManager= SessionManager(context)
