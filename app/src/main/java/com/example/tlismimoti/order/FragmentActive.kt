@@ -89,6 +89,7 @@ class FragmentActive : Fragment() {
                                // i.order_content.value.find {  }
                             }
 
+
                             Log.e("completed", completed.toString())
                             Log.e("pending", pending.toString())
                             Log.e("canceled", canceled.toString())
