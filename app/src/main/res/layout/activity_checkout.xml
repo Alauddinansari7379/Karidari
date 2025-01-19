@@ -6,446 +6,387 @@
     android:layout_height="match_parent"
     tools:context=".cart.Checkout">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:background="@color/dark_purple">
 
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imgBack"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:background="?actionBarItemBackground"
-            android:padding="5dp"
-            android:src="@drawable/baseline_arrow_back_24"
-            android:tint="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </androidx.appcompat.widget.AppCompatImageView>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/appCompatTextView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:text="@string/checkout"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </androidx.appcompat.widget.AppCompatTextView>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card1Address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        app:cardCornerRadius="10dp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
-
-        <LinearLayout
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:orientation="horizontal">
+            android:layout_height="250dp"
+            android:src="@color/green_900" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="5dp"
-                android:background="@drawable/location">
-
-            </androidx.appcompat.widget.AppCompatImageView>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10sp"
-                android:layout_marginTop="5dp"
-                android:drawableEnd="@drawable/baseline_keyboard_arrow_right_24"
-                android:padding="5dp"
-                android:text="@string/add_address"
-                android:textColor="@color/black"
-                android:textSize="10sp">
-
-            </androidx.appcompat.widget.AppCompatTextView>
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardPayment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        app:cardCornerRadius="10dp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="@+id/card1Address"
-        app:layout_constraintStart_toStartOf="@+id/card1Address"
-        app:layout_constraintTop_toBottomOf="@+id/card1Address">
-
-        <LinearLayout
+        <ImageView
+            android:id="@+id/img"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:layout_above="@id/bottom"
+            android:scaleType="fitXY"
+            android:src="@drawable/bg_white2" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="5dp"
-                android:background="@drawable/payment_card">
-
-            </androidx.appcompat.widget.AppCompatImageView>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10sp"
-                android:layout_marginTop="5dp"
-                android:drawableEnd="@drawable/baseline_keyboard_arrow_right_24"
-                android:padding="5dp"
-                android:text="@string/add_payment_method"
-                android:textColor="@color/black"
-                android:textSize="10sp">
-
-            </androidx.appcompat.widget.AppCompatTextView>
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_margin="15dp"
-        app:cardCornerRadius="10sp"
-        app:layout_constraintEnd_toEndOf="@+id/cardPayment"
-        app:layout_constraintStart_toStartOf="@+id/cardPayment"
-        app:layout_constraintTop_toBottomOf="@+id/cardPayment">
-
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginTop="25dp"
+            android:paddingHorizontal="15dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10sp"
-                android:layout_marginBottom="2dp"
-                android:background="@drawable/corner"
-                android:backgroundTint="#F8F8F8"
-                android:orientation="horizontal">
+            <RelativeLayout
+                android:id="@+id/btnBack"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_centerVertical="true">
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="5dp"
-                    android:backgroundTintMode="@color/main_color"
-                    android:background="@drawable/discount">
-
-                </androidx.appcompat.widget.AppCompatImageView>
-
-                <androidx.appcompat.widget.AppCompatTextView
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10sp"
-                    android:padding="12sp"
-                    android:text="@string/add_promo_code"
-                    android:textColor="@color/main_color"
-                    android:textSize="10sp">
+                    android:layout_height="match_parent"
+                    android:src="@drawable/circle_color"
+                    app:tint="@color/white_transparent" />
 
-                </androidx.appcompat.widget.AppCompatTextView>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_back"
+                    app:tint="@color/white" />
+            </RelativeLayout>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10sp"
-                android:layout_marginEnd="10sp"
-                android:orientation="horizontal">
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/sf_medium"
+                android:text="Checkout"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/subtotal"
-                    android:textColor="@color/black"
-                    android:textSize="10sp">
-
-                </androidx.appcompat.widget.AppCompatTextView>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/subTotal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginStart="10sp"
-                    android:layout_weight="1"
-                    android:gravity="end"
-                    android:text="@string/_00"
-                    android:textColor="@color/black"
-                    android:textSize="10sp">
-
-                </androidx.appcompat.widget.AppCompatTextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:id="@+id/btnCart"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10sp"
-                android:layout_marginTop="10sp"
                 android:visibility="gone"
-                android:layout_marginEnd="10sp"
-                android:orientation="horizontal">
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true">
 
+                <ImageView
+                    android:id="@+id/img1"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:src="@drawable/circle_color"
+                    app:tint="@color/white_transparent" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/delivery_fee"
-                    android:textColor="@color/black"
-                    android:textSize="10sp">
+                <ImageView
+                    android:id="@+id/cartIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_cart" />
 
-                </androidx.appcompat.widget.AppCompatTextView>
+                <TextView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_alignEnd="@id/img1"
+                    android:background="@drawable/circle_color"
+                    android:fontFamily="@font/sf_bold"
+                    android:gravity="center"
+                    android:text="5"
+                    android:textColor="@color/green_900"
+                    android:textSize="8sp" />
+            </RelativeLayout>
+        </RelativeLayout>
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/deliveryFee"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginStart="10sp"
-                    android:layout_weight="1"
-                    android:gravity="end"
-                    android:text="@string/_00"
-                    android:textColor="@color/black"
-                    android:textSize="10sp">
-
-                </androidx.appcompat.widget.AppCompatTextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10sp"
-                android:layout_marginTop="10sp"
-                android:layout_marginEnd="10sp"
-                android:orientation="horizontal">
-
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/discount"
-                    android:textColor="@color/black"
-                    android:textSize="10sp">
-
-                </androidx.appcompat.widget.AppCompatTextView>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/discount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginStart="10sp"
-                    android:layout_weight="1"
-                    android:gravity="end"
-                    android:text="@string/_0"
-                    android:textColor="@color/black"
-                    android:textSize="10sp">
-
-                </androidx.appcompat.widget.AppCompatTextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10sp"
-                android:layout_marginTop="10sp"
-                android:layout_marginEnd="10sp"
-                android:orientation="horizontal">
-
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvGSTRate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/gst"
-                    android:textColor="@color/black"
-                    android:textSize="10sp">
-
-                </androidx.appcompat.widget.AppCompatTextView>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvgst"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginStart="10sp"
-                    android:layout_weight="1"
-                    android:gravity="end"
-                    android:text="@string/_0"
-                    android:textColor="@color/black"
-                    android:textSize="10sp">
-
-                </androidx.appcompat.widget.AppCompatTextView>
-
-            </LinearLayout>
-
-            <androidx.viewpager.widget.ViewPager
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginStart="10sp"
-                android:layout_marginTop="10sp"
-                android:layout_marginEnd="10sp"
-                android:background="@color/gray_text">
-
-            </androidx.viewpager.widget.ViewPager>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10sp"
-                android:layout_marginTop="10sp"
-                android:layout_marginEnd="10sp"
-                android:orientation="horizontal">
-
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/total_bill"
-                    android:textColor="@color/black"
-                    android:textSize="10sp"
-                    android:textStyle="bold">
-
-                </androidx.appcompat.widget.AppCompatTextView>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/totalAmt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginStart="10sp"
-                    android:layout_weight="1"
-                    android:gravity="end"
-                    android:text="@string/_00"
-                    android:textColor="@color/black"
-                    android:textSize="10sp"
-                    android:textStyle="bold">
-
-                </androidx.appcompat.widget.AppCompatTextView>
-
-            </LinearLayout>
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="@+id/cardView2"
-        app:layout_constraintStart_toStartOf="@+id/cardView2"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2">
+        <TextView
+            android:id="@+id/totalItems"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar"
+            android:fontFamily="@font/sf_medium"
+            android:gravity="center"
+            android:text="Payment Details"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10sp"
-            android:visibility="gone"
-            android:layout_marginTop="10sp">
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@id/img"
+            android:layout_marginTop="170dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingVertical="10dp">
 
-            <RadioGroup
-                android:layout_width="0dp"
-                android:layout_height="25dp"
-                android:layout_marginTop="2dp"
-                android:layout_weight="1"
-                android:gravity="start"
-                android:orientation="horizontal">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginEnd="15dp"
+                app:cardCornerRadius="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
-                <RadioButton
-                    android:id="@+id/radioRazorPay"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                     android:text="Razor Pay"
-                    android:checked="true"
-                    android:textSize="10sp"
-                    android:textStyle="bold">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                </RadioButton>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10sp"
+                        android:layout_marginBottom="2dp"
+                        android:background="@drawable/corner"
+                        android:backgroundTint="#F8F8F8"
+                        android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/radioOnline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="5dp"
-                    android:text="QR Code"
-                     android:textSize="10sp"
-                    android:checked="true"
-                    android:textStyle="bold">
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="5dp"
+                            android:background="@drawable/discount">
 
-                </RadioButton>
-            </RadioGroup>
+                        </androidx.appcompat.widget.AppCompatImageView>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10sp"
+                            android:padding="12sp"
+                            android:text="@string/add_promo_code"
+                            android:textColor="@color/green_900"
+                            android:textSize="10sp">
+
+                        </androidx.appcompat.widget.AppCompatTextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10sp"
+                        android:layout_marginEnd="10sp"
+                        android:orientation="horizontal">
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/subtotal"
+                            android:textColor="@color/black"
+                            android:textSize="10sp">
+
+                        </androidx.appcompat.widget.AppCompatTextView>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/subTotal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginStart="10sp"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="@string/_00"
+                            android:textColor="@color/black"
+                            android:textSize="10sp">
+
+                        </androidx.appcompat.widget.AppCompatTextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10sp"
+                        android:layout_marginTop="10sp"
+                        android:layout_marginEnd="10sp"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/delivery_fee"
+                            android:textColor="@color/black"
+                            android:textSize="10sp">
+
+                        </androidx.appcompat.widget.AppCompatTextView>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/deliveryFee"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginStart="10sp"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="@string/_00"
+                            android:textColor="@color/black"
+                            android:textSize="10sp">
+
+                        </androidx.appcompat.widget.AppCompatTextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10sp"
+                        android:layout_marginTop="10sp"
+                        android:layout_marginEnd="10sp"
+                        android:orientation="horizontal">
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/discount"
+                            android:textColor="@color/black"
+                            android:textSize="10sp">
+
+                        </androidx.appcompat.widget.AppCompatTextView>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/discount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginStart="10sp"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="@string/_0"
+                            android:textColor="@color/black"
+                            android:textSize="10sp">
+
+                        </androidx.appcompat.widget.AppCompatTextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10sp"
+                        android:layout_marginTop="10sp"
+                        android:layout_marginEnd="10sp"
+                        android:orientation="horizontal">
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvGSTRate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/gst"
+                            android:textColor="@color/black"
+                            android:textSize="10sp">
+
+                        </androidx.appcompat.widget.AppCompatTextView>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvgst"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginStart="10sp"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="@string/_0"
+                            android:textColor="@color/black"
+                            android:textSize="10sp">
+
+                        </androidx.appcompat.widget.AppCompatTextView>
+
+                    </LinearLayout>
+
+                    <androidx.viewpager.widget.ViewPager
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="10sp"
+                        android:layout_marginTop="10sp"
+                        android:layout_marginEnd="10sp"
+                        android:background="@color/gray_text">
+
+                    </androidx.viewpager.widget.ViewPager>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10sp"
+                        android:layout_marginTop="10sp"
+                        android:layout_marginEnd="10sp"
+                        android:orientation="horizontal">
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/total_bill"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            android:textStyle="bold">
+
+                        </androidx.appcompat.widget.AppCompatTextView>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/totalAmt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginStart="10sp"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="@string/_00"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            android:textStyle="bold">
+
+                        </androidx.appcompat.widget.AppCompatTextView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 
+        <RelativeLayout
+            android:id="@+id/bottom"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_alignParentBottom="true">
 
-     </LinearLayout>
+            <ng.max.slideview.SlideView
+                android:id="@+id/slideView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginEnd="15dp"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.421"
+                app:layout_constraintStart_toStartOf="parent"
+                app:sv_animateSlideText="true"
+                app:sv_buttonBackgroundColor="@color/dark_purple"
+                app:sv_buttonImage="@drawable/slide"
+                app:sv_reverseSlide="false"
+                app:sv_slideBackgroundColor="@color/green_900"
+                app:sv_slideText="Slide to Order now!"
+                app:sv_slideTextColor="@color/white"
+                app:sv_slideTextSize="12sp"
+                app:sv_strokeColor="@color/orange_200"
+                tools:ignore="MissingConstraints" />
 
-    <ng.max.slideview.SlideView
-        android:id="@+id/slideView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.421"
-        app:layout_constraintStart_toStartOf="parent"
-        app:sv_animateSlideText="true"
-        app:sv_buttonBackgroundColor="@color/main_color"
-        app:sv_buttonImage="@drawable/slide"
-         app:sv_reverseSlide="false"
-        app:sv_slideBackgroundColor="@color/main_color"
-        app:sv_slideText="Slide to Order now!"
-        app:sv_slideTextColor="@color/white"
-        app:sv_slideTextSize="12sp"
-        app:sv_strokeColor="@color/main_color"
-        tools:ignore="MissingConstraints" />
-
+        </RelativeLayout>
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

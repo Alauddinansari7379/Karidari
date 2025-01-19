@@ -82,7 +82,7 @@ dependencies {
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
 
     //coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
     //Check Internet Connection
     implementation 'com.github.raheemadamboev:check-internet-android:1.1.1'
@@ -94,8 +94,6 @@ dependencies {
 
     //Searchable Spinner
     implementation 'com.github.DonMat:searchablespinner:v1.0.1'
-//    implementation 'com.github.mudassar1:SearchableSpinner:v1.1'
-//    implementation 'com.github.leoncydsilva:SearchableSpinner:1.0.1'
     implementation 'com.github.chivorns:smartmaterialspinner:1.5.0'
 
     //PDF Viewer
@@ -112,28 +110,9 @@ dependencies {
 
     //swipeButton
     implementation 'com.github.MAXDeliveryNG:slideview:1.1.0'
-    //Check update from  the play store
-   // implementation 'com.google.android.play:core:1.10.3'
-
     //RazorPay
-   
     implementation 'com.razorpay:checkout:1.6.26'
-
-//    implementation("com.google.android.play:asset-delivery:2.2.2")
-//
-//    // For Kotlin users also import the Kotlin extensions library for Play Asset Delivery:
-//    implementation("com.google.android.play:asset-delivery-ktx:2.2.2")
-//    implementation("com.google.android.play:feature-delivery:2.1.0")
-//
-//    // For Kotlin users, also import the Kotlin extensions library for Play Feature Delivery:
-//    implementation("com.google.android.play:feature-delivery-ktx:2.1.0")
-//    implementation("com.google.android.play:review:2.0.1")
-//
-//    // For Kotlin users, also import the Kotlin extensions library for Play In-App Review:
-//    implementation("com.google.android.play:review-ktx:2.0.1")
-//    implementation("com.google.android.play:app-update:2.1.0")
-//
-//    // For Kotlin users, also import the Kotlin extensions library for Play In-App Update:
-//    implementation("com.google.android.play:app-update-ktx:2.1.0")
+    //Card View
+    implementation "com.yuyakaido.android:card-stack-view:2.3.4"
 
 }

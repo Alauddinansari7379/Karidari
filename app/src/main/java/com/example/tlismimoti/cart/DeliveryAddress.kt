@@ -96,7 +96,7 @@ class DeliveryAddress : AppCompatActivity(), PaymentResultListener {
         apiCallGetPaymentList()
         apiCallGetActiveGateways()
         with(binding) {
-            imgBack.setOnClickListener {
+            btnBack.setOnClickListener {
                 onBackPressed()
             }
             tvTotalAmt.text = "Total Amount : ${sessionManager.currency}" + totalAmt
@@ -305,8 +305,7 @@ class DeliveryAddress : AppCompatActivity(), PaymentResultListener {
                             binding.layoutAddress.visibility = View.GONE
                             binding.layoutCongratulation.visibility = View.VISIBLE
                             binding.btnPlaceOrder.text = "Awesome"
-                            binding.appCompatTextView2.text = "Order placed"
-                            AppProgressBar.hideLoaderDialog()
+                             AppProgressBar.hideLoaderDialog()
                             val se= SweetAlertDialog(context, SweetAlertDialog.SUCCESS_TYPE)
                                 .setTitleText("Order placed")
                                 .setConfirmText("Ok")

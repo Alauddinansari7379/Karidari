@@ -137,7 +137,7 @@ class CartFragment : Fragment(), AdapterCart.Cart {
 
 
                         } else if (response.body()!!.data.items.size == 0) {
-                            binding!!.recyclerView.adapter =
+                            binding!!.cartRecycler.adapter =
                                 activity?.let {
                                     AdapterCart(
                                         it,
@@ -149,12 +149,12 @@ class CartFragment : Fragment(), AdapterCart.Cart {
                             binding.shimmer.visibility = View.GONE
                             CartItem="0"
                             binding.totalPrice.text=""
-                            binding.appCompatTextView.text="0 items"
+                            binding.totalItems.text="0 items"
                             AppProgressBar.hideLoaderDialog()
 
                         } else {
                             countGet=0
-                            binding!!.recyclerView.adapter =
+                            binding!!.cartRecycler.adapter =
                                 activity?.let {
                                     AdapterCart(
                                         it,
@@ -164,7 +164,7 @@ class CartFragment : Fragment(), AdapterCart.Cart {
                                 }
                             CartItem=""
                             finalTotal.clear()
-                            // binding.shimmer.visibility = View.GONE
+                             binding.shimmer.visibility = View.GONE
                             for (i in response.body()!!.data.items) {
 
                                 finalTotal.add(i.qty.toInt()*i.price.toInt())
@@ -175,8 +175,7 @@ class CartFragment : Fragment(), AdapterCart.Cart {
                             Checkout.totalAmt= finalTotal.sum().toString()
 
                             binding.totalPrice.text = "${sessionManager.currency}"  + finalTotal.sum()
-                            binding.appCompatTextView.text = response.body()!!.data.items.size.toString() + " items"
-                            binding.shimmer.visibility = View.GONE
+                            binding.totalItems.text = response.body()!!.data.items.size.toString() + " Items added"
 
                             AppProgressBar.hideLoaderDialog()
 

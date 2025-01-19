@@ -30,7 +30,10 @@ class OrderDetails : AppCompatActivity() {
         orderId=intent.getStringExtra("id").toString()
         apiCallGetAllOrderDet()
         with(binding){
-            imgBack.setOnClickListener {
+            btnBack.setOnClickListener {
+                onBackPressed()
+            }
+            btnGoBack.setOnClickListener {
                 onBackPressed()
             }
 

@@ -78,14 +78,7 @@ class Checkout : AppCompatActivity(){
         }
         // apiCallCartProduct()
         with(binding) {
-            card1Address.setOnClickListener {
-                startActivity(Intent(this@Checkout, DeliveryAddress::class.java))
-            }
-
-            cardPayment.setOnClickListener {
-                startActivity(Intent(this@Checkout, AddCard::class.java))
-            }
-            imgBack.setOnClickListener {
+            btnBack.setOnClickListener {
                 onBackPressed()
             }
             val slideView = findViewById<View>(com.example.tlismimoti.R.id.slideView) as SlideView

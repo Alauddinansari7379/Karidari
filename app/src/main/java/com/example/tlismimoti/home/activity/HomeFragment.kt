@@ -2,7 +2,6 @@ package com.example.tlismimoti.home.activity
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -13,41 +12,49 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import com.afdhal_fa.imageslider.`interface`.ItemClickListener
 import com.afdhal_fa.imageslider.model.SlideUIModel
 import com.amtech.mehfeel.home.model.modelTop.ModelNewArraivals
 import com.example.tlismimoti.Helper.AppProgressBar
 import com.example.tlismimoti.Helper.myToast
 import com.example.tlismimoti.R
+import com.example.tlismimoti.categories.Adapter.AdapterCategory
+import com.example.tlismimoti.categories.model.ModelCatWithId.modelCat.ModelGetCar
 import com.example.tlismimoti.categories.modelCurrency.ModelCurrency
 import com.example.tlismimoti.databinding.FragmentHomeBinding
 import com.example.tlismimoti.home.adapter.AdapterProduct
 import com.example.tlismimoti.home.adapter.AdapterTopTrending
+import com.example.tlismimoti.home.adapter.CategoryAdapter
 import com.example.tlismimoti.home.model.DataX
 import com.example.tlismimoti.home.model.ModeCatId
 import com.example.tlismimoti.home.model.ModelProduct
+import com.example.tlismimoti.home.model.OutfitCategory
 import com.example.tlismimoti.home.model.modelSlider.ModelSlider
 import com.example.tlismimoti.listing.Listing
 import com.example.tlismimoti.listing.model.Category
 import com.example.tlismimoti.retrofit.ApiClient
 import com.example.tlismimoti.sharedpreferences.SessionManager
 import com.facebook.shimmer.ShimmerFrameLayout
+import com.yuyakaido.android.cardstackview.CardStackListener
+import com.yuyakaido.android.cardstackview.Direction
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
-import kotlin.collections.ArrayList
 
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), CardStackListener,
+    CategoryAdapter.OnCategoryClickListener {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var sessionManager: SessionManager
     private var mainData = ArrayList<DataX>()
     private var allCategoryName = ArrayList<String>()
     var shimmerFrameLayout: ShimmerFrameLayout? = null
     var categoryWithId = ArrayList<ModeCatId>()
+        private lateinit var mCategoryAdapter: CategoryAdapter
     var count = 0
     var countCat = 0
     var countDis = 0
@@ -55,6 +62,7 @@ class HomeFragment : Fragment() {
     var counTop = 0
     var counCur = 0
     var countS = 0
+        var countL = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -80,7 +88,7 @@ class HomeFragment : Fragment() {
         apiCallDiscount()
         apiCallTopTre()
         apiCallGetCurrency()
-
+        apiCallGetAllCategoryList()
 
         with(binding) {
             tvViewAll1.setOnClickListener {
@@ -946,6 +954,73 @@ class HomeFragment : Fragment() {
 
             })
     }
+        private fun apiCallGetAllCategoryList() {
+            // AppProgressBar.showLoaderDialog(requireContext())
+            ApiClient.apiService.getCategory(sessionManager.authToken!!, "category")
+                .enqueue(object : Callback<ModelGetCar> {
+                    @RequiresApi(Build.VERSION_CODES.O)
+                    override fun onResponse(
+                        call: Call<ModelGetCar>, response: Response<ModelGetCar>
+                    ) {
+                        try {
+                            if (response.code() == 500) {
+                                myToast(requireActivity(), "Server Error")
+                                AppProgressBar.hideLoaderDialog()
+
+                            } else if (response.code() == 404) {
+                                myToast(requireActivity(), "Something went wrong")
+                                AppProgressBar.hideLoaderDialog()
+
+                            } else if (response.body()!!.data.data.isEmpty()) {
+//
+                                myToast(requireActivity(), "No Category Found")
+
+                                AppProgressBar.hideLoaderDialog()
+
+                            } else {
+                                countL = 0
+
+                                if (response.isSuccessful && response.body() != null) {
+                                    val category = mutableListOf<OutfitCategory>()
+
+                                    for (item in response.body()!!.data.data) {
+                                        val id = item.id
+                                        val name = item.name
+                                        val content = item.preview.content
+                                        category.add(OutfitCategory(id,name, content))
+                                    }
+
+                                    // Set up the adapter
+                                    mCategoryAdapter = CategoryAdapter(category, requireContext())
+                                    mCategoryAdapter.setOnCategoryClickListener(this@HomeFragment)
+                                    binding.categoryRecycler.adapter = mCategoryAdapter
+                                }
+
+                            }
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<ModelGetCar>, t: Throwable) {
+                        //myToast(requireActivity(), "Something went wrong")
+                        countL++
+                        if (countL <= 7) {
+                            Log.e("count", countL.toString())
+                            apiCallGetAllCategoryList()
+                        } else {
+                            countL = 0
+                            myToast(requireActivity(), t.message.toString())
+                            AppProgressBar.hideLoaderDialog()
+
+                        }
+                        AppProgressBar.hideLoaderDialog()
+
+
+                    }
+
+                })
+        }
     private fun apiCallGetAllCategory() {
         // AppProgressBar.showLoaderDialog(requireContext())
         ApiClient.apiService.product(sessionManager.authToken!!)
@@ -1234,6 +1309,34 @@ class HomeFragment : Fragment() {
                 }
 
             })
+    }
+
+    override fun onCardDragging(direction: Direction?, ratio: Float) {
+
+    }
+
+    override fun onCardSwiped(direction: Direction?) {
+
+    }
+
+    override fun onCardRewound() {
+
+    }
+
+    override fun onCardCanceled() {
+
+    }
+
+    override fun onCardAppeared(view: View?, position: Int) {
+
+    }
+
+    override fun onCardDisappeared(view: View?, position: Int) {
+
+    }
+
+    override fun onCategoryClick(position: Int) {
+
     }
 
 }

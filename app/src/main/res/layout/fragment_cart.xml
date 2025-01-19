@@ -1,25 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".cart.CartFragment">
+    android:background="@color/dark_purple"
+    >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:src="@color/green_900" />
 
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom"
+        android:scaleType="fitXY"
+        android:src="@drawable/bg_white2" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="25dp"
+        android:paddingHorizontal="15dp">
+
+        <RelativeLayout
+            android:id="@+id/btnBack"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:visibility="gone"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/circle_color"
+                app:tint="@color/white_transparent" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_back"
+                app:tint="@color/white" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/sf_medium"
+            android:text="SHOPPING CART"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/btnCart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:id="@+id/img1"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:src="@drawable/circle_color"
+                app:tint="@color/white_transparent" />
+
+            <ImageView
+                android:id="@+id/cartIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_cart" />
+
+            <TextView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignEnd="@id/img1"
+                android:background="@drawable/circle_color"
+                android:fontFamily="@font/sf_bold"
+                android:gravity="center"
+                android:text="5"
+                android:textColor="@color/green_900"
+                android:textSize="8sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/totalItems"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-
+        android:layout_below="@id/toolbar"
+        android:fontFamily="@font/sf_medium"
+        android:gravity="center"
+        android:text="3 Items added"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@id/img"
+        android:layout_marginTop="170dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingVertical="10dp">
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/shimmer"
             android:layout_width="match_parent"
@@ -48,72 +138,63 @@
             </LinearLayout>
 
         </com.facebook.shimmer.ShimmerFrameLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cartRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical" />
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:padding="30dp"
+        android:layout_height="120dp"
+        android:layout_alignParentBottom="true">
 
+        <LinearLayout
+            android:id="@+id/start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_alignParentBottom="true"
+             android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnGoToCheckout"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/corner_login"
-                android:backgroundTint="@color/main_color"
-                android:paddingStart="25dp"
-                android:paddingEnd="25dp"
-                android:text="Go to checkout"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent">
-
-
-            </androidx.appcompat.widget.AppCompatButton>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/appCompatTextView"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
-                android:text="0 items"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/btnGoToCheckout"
-                tools:ignore="MissingConstraints">
+                android:fontFamily="@font/sf_regular"
+                android:text="Total Payment"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
 
-            </androidx.appcompat.widget.AppCompatTextView>
-
-            <androidx.appcompat.widget.AppCompatTextView
+            <TextView
                 android:id="@+id/totalPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
+                android:fontFamily="@font/sf_medium"
                 android:text="00"
-                android:textColor="@color/main_color"
-                android:textSize="11sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/btnGoToCheckout"
-                app:layout_constraintEnd_toEndOf="@+id/appCompatTextView"
-                app:layout_constraintStart_toStartOf="@+id/appCompatTextView">
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-            </androidx.appcompat.widget.AppCompatTextView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnGoToCheckout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_toEndOf="@id/start"
+            android:background="@drawable/btn_dark"
+            android:elevation="0dp"
+            android:layout_alignParentBottom="true"
+            android:fontFamily="@font/sf_medium"
+            android:stateListAnimator="@null"
+            android:text="Go to checkout"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+    </RelativeLayout>
+</RelativeLayout>

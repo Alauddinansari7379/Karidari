@@ -8,180 +8,524 @@
     android:orientation="vertical"
     tools:context=".cart.AddCard">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
+        android:layout_height="match_parent"
         android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="vertical"
+        tools:context=".Activity.FavoriteOutfitsActivity">
 
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imgBack"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:background="?actionBarItemBackground"
-            android:padding="5dp"
-            android:src="@drawable/baseline_arrow_back_24"
-            android:tint="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </androidx.appcompat.widget.AppCompatImageView>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/appCompatTextView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:text="Order details"
-            android:textColor="@color/black"
-            android:fontFamily="@font/poppins_regular"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </androidx.appcompat.widget.AppCompatTextView>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ScrollView
-        android:id="@+id/scrollView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:scrollbars="none"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
-
-
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="?attr/actionBarSize"
+            android:paddingHorizontal="15dp">
+
+            <RelativeLayout
+                android:id="@+id/btnBack"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_back" />
+            </RelativeLayout>
+
+
+            <TextView
+                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/sf_medium"
+                android:text="Order Details"
+                android:textColor="@color/dark_purple"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:id="@+id/scrollView3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_above="@+id/bottom"
+            android:layout_below="@+id/toolbar"
+             android:scrollbars="none"
+             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
 
             <LinearLayout
-                android:id="@+id/layoutplsfill"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+                android:orientation="vertical">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvOrderNo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="center"
-                    android:text="Order No"
-                    android:textColor="@color/main_color"
-                    android:textSize="16sp"
-                    android:textStyle="bold">
-
-
-                </androidx.appcompat.widget.AppCompatTextView>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvOrderStatues"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="center"
-                    android:text="In Progress"
-                    android:textSize="16sp"
-                    android:textStyle="bold">
-
-
-                </androidx.appcompat.widget.AppCompatTextView>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="center"
-                    android:text="12-11-2024">
-
-                </androidx.appcompat.widget.AppCompatTextView>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:text="Your order is received and we will\n deliver in 5 business days."
-                    android:visibility="gone">
-
-                </androidx.appcompat.widget.AppCompatTextView>
-
-
-            </LinearLayout>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardProgress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:elevation="5dp"
-                app:cardCornerRadius="10dp">
 
                 <LinearLayout
+                    android:id="@+id/layoutplsfill"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_margin="15dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvOrderNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:text="Order No"
+                        android:textColor="@color/main_color"
+                        android:textSize="16sp"
+                        android:textStyle="bold">
+
+
+                    </androidx.appcompat.widget.AppCompatTextView>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvOrderStatues"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:text="In Progress"
+                        android:textSize="16sp"
+                        android:textStyle="bold">
+
+
+                    </androidx.appcompat.widget.AppCompatTextView>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:text="12-11-2024">
+
+                    </androidx.appcompat.widget.AppCompatTextView>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="Your order is received and we will\n deliver in 5 business days."
+                        android:visibility="gone">
+
+                    </androidx.appcompat.widget.AppCompatTextView>
+
+
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardProgress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:elevation="5dp"
+                    app:cardCornerRadius="10dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/itemQty"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins_regular"
+                                    android:text="@string/_0_items"
+                                    android:textColor="@color/gray_text"
+                                    android:textSize="10dp">
+
+                                </androidx.appcompat.widget.AppCompatTextView>
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/totalPrice"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins_regular"
+                                    android:text="@string/_00"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_13sdp"
+                                    android:textStyle="bold">
+
+                                </androidx.appcompat.widget.AppCompatTextView>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_marginEnd="10dp"
+                                android:background="@drawable/corner_login"
+                                android:backgroundTint="#F4F8EE"
+                                android:gravity="center"
+                                android:imeOptions="actionDone"
+                                android:inputType="text"
+                                android:orientation="horizontal"
+                                android:textColorHint="@color/black"
+                                android:textSize="12sp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:orientation="horizontal"
+                                    android:paddingStart="10dp"
+                                    android:paddingEnd="10dp">
+
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/tvOrderStatuesRec"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/poppins_regular"
+                                        android:text="@string/in_progress"
+                                        android:textColor="@color/main_color"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold">
+
+                                    </androidx.appcompat.widget.AppCompatTextView>
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewMen"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:orientation="vertical"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+
+                        </androidx.recyclerview.widget.RecyclerView>
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    android:layout_margin="15dp"
+                    app:cardCornerRadius="10sp"
+                    app:layout_constraintEnd_toEndOf="@+id/cardPayment"
+                    app:layout_constraintStart_toStartOf="@+id/cardPayment"
+                    app:layout_constraintTop_toBottomOf="@+id/cardPayment">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10sp"
+                            android:layout_marginBottom="2dp"
+                            android:background="@drawable/corner"
+                            android:backgroundTint="#F8F8F8"
+                            android:orientation="horizontal">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="5dp"
+                                android:background="@drawable/discount"
+                                android:backgroundTint="@color/main_color"
+                                android:tint="@color/main_color">
+
+                            </androidx.appcompat.widget.AppCompatImageView>
 
                             <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/itemQty"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="10sp"
                                 android:fontFamily="@font/poppins_regular"
-                                android:text="@string/_0_items"
-                                android:textColor="@color/gray_text"
-                                android:textSize="10dp">
+                                android:padding="12sp"
+                                android:text="Price Details"
+                                android:textColor="@color/main_color"
+                                android:textSize="10sp">
+
+                            </androidx.appcompat.widget.AppCompatTextView>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10sp"
+                            android:layout_marginEnd="10sp"
+                            android:orientation="horizontal">
+
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="@string/subtotal"
+                                android:textColor="@color/black"
+                                android:textSize="10sp">
 
                             </androidx.appcompat.widget.AppCompatTextView>
 
                             <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/totalPrice"
-                                android:layout_width="wrap_content"
+                                android:id="@+id/subTotal"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:layout_marginStart="10sp"
+                                android:layout_weight="1"
                                 android:fontFamily="@font/poppins_regular"
+                                android:gravity="end"
                                 android:text="@string/_00"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_13sdp"
+                                android:textSize="10sp">
+
+                            </androidx.appcompat.widget.AppCompatTextView>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10sp"
+                            android:layout_marginTop="10sp"
+                            android:layout_marginEnd="10sp"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/delivery_fee"
+                                android:textColor="@color/black"
+                                android:textSize="10sp">
+
+                            </androidx.appcompat.widget.AppCompatTextView>
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/deliveryFee"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:layout_marginStart="10sp"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:text="@string/_00"
+                                android:textColor="@color/black"
+                                android:textSize="10sp">
+
+                            </androidx.appcompat.widget.AppCompatTextView>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10sp"
+                            android:layout_marginTop="10sp"
+                            android:layout_marginEnd="10sp"
+                            android:orientation="horizontal">
+
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="@string/discount"
+                                android:textColor="@color/black"
+                                android:textSize="10sp">
+
+                            </androidx.appcompat.widget.AppCompatTextView>
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/discount"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:layout_marginStart="10sp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_regular"
+                                android:gravity="end"
+                                android:text="@string/_0"
+                                android:textColor="@color/black"
+                                android:textSize="10sp">
+
+                            </androidx.appcompat.widget.AppCompatTextView>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10sp"
+                            android:layout_marginTop="10sp"
+                            android:layout_marginEnd="10sp"
+                            android:orientation="horizontal">
+
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvGSTRate"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="@string/gst"
+                                android:textColor="@color/black"
+                                android:textSize="10sp">
+
+                            </androidx.appcompat.widget.AppCompatTextView>
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvgst"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:layout_marginStart="10sp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_regular"
+                                android:gravity="end"
+                                android:text="@string/_0"
+                                android:textColor="@color/black"
+                                android:textSize="10sp">
+
+                            </androidx.appcompat.widget.AppCompatTextView>
+
+                        </LinearLayout>
+
+                        <androidx.viewpager.widget.ViewPager
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="10sp"
+                            android:layout_marginTop="10sp"
+                            android:layout_marginEnd="10sp"
+                            android:background="@color/gray_text">
+
+                        </androidx.viewpager.widget.ViewPager>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10sp"
+                            android:layout_marginTop="10sp"
+                            android:layout_marginEnd="10sp"
+                            android:orientation="horizontal">
+
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="@string/total_bill"
+                                android:textColor="@color/black"
+                                android:textSize="10sp"
+                                android:textStyle="bold">
+
+                            </androidx.appcompat.widget.AppCompatTextView>
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/totalAmt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:layout_marginStart="10sp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_regular"
+                                android:gravity="end"
+                                android:text="@string/_00"
+                                android:textColor="@color/black"
+                                android:textSize="10sp"
+                                android:textStyle="bold">
+
+                            </androidx.appcompat.widget.AppCompatTextView>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_margin="15dp"
+                    app:cardCornerRadius="10sp"
+                    app:layout_constraintEnd_toEndOf="@+id/cardPayment"
+                    app:layout_constraintStart_toStartOf="@+id/cardPayment"
+                    app:layout_constraintTop_toBottomOf="@+id/cardPayment">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10sp"
+                            android:layout_marginBottom="2dp"
+                            android:background="@drawable/corner"
+                            android:backgroundTint="#F8F8F8"
+                            android:orientation="horizontal">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="5dp"
+                                android:background="@drawable/location"
+                                android:backgroundTint="@color/main_color"
+                                android:tint="@color/main_color">
+
+                            </androidx.appcompat.widget.AppCompatImageView>
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10sp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:padding="12sp"
+                                android:text="Name &amp; Address"
+                                android:textColor="@color/main_color"
+                                android:textSize="12sp"
                                 android:textStyle="bold">
 
                             </androidx.appcompat.widget.AppCompatTextView>
@@ -189,429 +533,97 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="30dp"
-                            android:layout_marginEnd="10dp"
-                            android:background="@drawable/corner_login"
-                            android:backgroundTint="#F4F8EE"
-                            android:gravity="center"
-                            android:imeOptions="actionDone"
-                            android:inputType="text"
-                            android:orientation="horizontal"
-                            android:textColorHint="@color/black"
-                            android:textSize="12sp">
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10sp"
+                            android:layout_marginEnd="10sp"
+                            android:orientation="vertical">
 
-                            <LinearLayout
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvName"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:orientation="horizontal"
-                                android:paddingStart="10dp"
-                                android:paddingEnd="10dp">
+                                android:layout_gravity="end"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="@string/_0"
+                                android:textColor="@color/black"
+                                android:textSize="11sp">
 
+                            </androidx.appcompat.widget.AppCompatTextView>
 
-                                <androidx.appcompat.widget.AppCompatTextView
-                                    android:id="@+id/tvOrderStatuesRec"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/poppins_regular"
-                                    android:text="@string/in_progress"
-                                    android:textColor="@color/main_color"
-                                    android:textSize="10sp"
-                                    android:textStyle="bold">
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvAddress"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="@string/add_address"
+                                android:textColor="@color/black"
+                                android:textSize="11sp">
 
-                                </androidx.appcompat.widget.AppCompatTextView>
-                            </LinearLayout>
+                            </androidx.appcompat.widget.AppCompatTextView>
 
 
                         </LinearLayout>
 
                     </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerViewMen"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:orientation="vertical"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
-
-                    </androidx.recyclerview.widget.RecyclerView>
-
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView2"
-                android:layout_width="match_parent"
-                android:layout_height="190dp"
-                android:layout_margin="15dp"
-                app:cardCornerRadius="10sp"
-                app:layout_constraintEnd_toEndOf="@+id/cardPayment"
-                app:layout_constraintStart_toStartOf="@+id/cardPayment"
-                app:layout_constraintTop_toBottomOf="@+id/cardPayment">
-
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10sp"
-                        android:layout_marginBottom="2dp"
-                        android:background="@drawable/corner"
-                        android:backgroundTint="#F8F8F8"
-                        android:orientation="horizontal">
-
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="5dp"
-                            android:background="@drawable/discount"
-                            android:backgroundTint="@color/main_color"
-                            android:tint="@color/main_color">
-
-                        </androidx.appcompat.widget.AppCompatImageView>
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10sp"
-                            android:fontFamily="@font/poppins_regular"
-                            android:padding="12sp"
-                            android:text="Price Details"
-                            android:textColor="@color/main_color"
-                            android:textSize="10sp">
-
-                        </androidx.appcompat.widget.AppCompatTextView>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10sp"
-                        android:layout_marginEnd="10sp"
-                        android:orientation="horizontal">
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="35dp"
+                    android:orientation="horizontal">
 
 
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/poppins_regular"
-                            android:text="@string/subtotal"
-                            android:textColor="@color/black"
-                            android:textSize="10sp">
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
-                        </androidx.appcompat.widget.AppCompatTextView>
+            </LinearLayout>
+        </ScrollView>
 
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/subTotal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_marginStart="10sp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/poppins_regular"
-                            android:gravity="end"
-                            android:text="@string/_00"
-                            android:textColor="@color/black"
-                            android:textSize="10sp">
+        <RelativeLayout
+            android:id="@+id/bottom"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bg_shape2">
 
-                        </androidx.appcompat.widget.AppCompatTextView>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10sp"
-                        android:layout_marginTop="10sp"
-                        android:layout_marginEnd="10sp"
-                        android:orientation="horizontal"
-                        android:visibility="gone">
-
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/delivery_fee"
-                            android:textColor="@color/black"
-                            android:textSize="10sp">
-
-                        </androidx.appcompat.widget.AppCompatTextView>
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/deliveryFee"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_marginStart="10sp"
-                            android:layout_weight="1"
-                            android:gravity="end"
-                            android:text="@string/_00"
-                            android:textColor="@color/black"
-                            android:textSize="10sp">
-
-                        </androidx.appcompat.widget.AppCompatTextView>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10sp"
-                        android:layout_marginTop="10sp"
-                        android:layout_marginEnd="10sp"
-                        android:orientation="horizontal">
-
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/poppins_regular"
-                            android:text="@string/discount"
-                            android:textColor="@color/black"
-                            android:textSize="10sp">
-
-                        </androidx.appcompat.widget.AppCompatTextView>
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/discount"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_marginStart="10sp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/poppins_regular"
-                            android:gravity="end"
-                            android:text="@string/_0"
-                            android:textColor="@color/black"
-                            android:textSize="10sp">
-
-                        </androidx.appcompat.widget.AppCompatTextView>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10sp"
-                        android:layout_marginTop="10sp"
-                        android:layout_marginEnd="10sp"
-                        android:orientation="horizontal">
-
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tvGSTRate"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/poppins_regular"
-                            android:text="@string/gst"
-                            android:textColor="@color/black"
-                            android:textSize="10sp">
-
-                        </androidx.appcompat.widget.AppCompatTextView>
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tvgst"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_marginStart="10sp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/poppins_regular"
-                            android:gravity="end"
-                            android:text="@string/_0"
-                            android:textColor="@color/black"
-                            android:textSize="10sp">
-
-                        </androidx.appcompat.widget.AppCompatTextView>
-
-                    </LinearLayout>
-
-                    <androidx.viewpager.widget.ViewPager
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginStart="10sp"
-                        android:layout_marginTop="10sp"
-                        android:layout_marginEnd="10sp"
-                        android:background="@color/gray_text">
-
-                    </androidx.viewpager.widget.ViewPager>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10sp"
-                        android:layout_marginTop="10sp"
-                        android:layout_marginEnd="10sp"
-                        android:orientation="horizontal">
-
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/poppins_regular"
-                            android:text="@string/total_bill"
-                            android:textColor="@color/black"
-                            android:textSize="10sp"
-                            android:textStyle="bold">
-
-                        </androidx.appcompat.widget.AppCompatTextView>
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/totalAmt"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_marginStart="10sp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/poppins_regular"
-                            android:gravity="end"
-                            android:text="@string/_00"
-                            android:textColor="@color/black"
-                            android:textSize="10sp"
-                            android:textStyle="bold">
-
-                        </androidx.appcompat.widget.AppCompatTextView>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:layout_margin="15dp"
-                app:cardCornerRadius="10sp"
-                app:layout_constraintEnd_toEndOf="@+id/cardPayment"
-                app:layout_constraintStart_toStartOf="@+id/cardPayment"
-                app:layout_constraintTop_toBottomOf="@+id/cardPayment">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10sp"
-                        android:layout_marginBottom="2dp"
-                        android:background="@drawable/corner"
-                        android:backgroundTint="#F8F8F8"
-                        android:orientation="horizontal">
-
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="5dp"
-                            android:background="@drawable/location"
-                            android:backgroundTint="@color/main_color"
-                            android:tint="@color/main_color">
-
-                        </androidx.appcompat.widget.AppCompatImageView>
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10sp"
-                            android:fontFamily="@font/poppins_regular"
-                            android:padding="12sp"
-                            android:text="Name &amp; Address"
-                            android:textColor="@color/main_color"
-                            android:textSize="12sp"
-                            android:textStyle="bold">
-
-                        </androidx.appcompat.widget.AppCompatTextView>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10sp"
-                        android:layout_marginEnd="10sp"
-                        android:orientation="vertical">
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tvName"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_marginTop="10dp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/poppins_regular"
-                            android:text="@string/_0"
-                            android:textColor="@color/black"
-                            android:textSize="11sp">
-
-                        </androidx.appcompat.widget.AppCompatTextView>
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tvAddress"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/poppins_regular"
-                            android:text="@string/add_address"
-                            android:textColor="@color/black"
-                            android:textSize="11sp">
-
-                        </androidx.appcompat.widget.AppCompatTextView>
-
-
-                    </LinearLayout>
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnGoBack"
+                android:layout_width="245dp"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
                 android:layout_marginBottom="35dp"
-                android:orientation="horizontal">
+                android:background="@drawable/btn_dark"
+                android:elevation="0dp"
+                android:fontFamily="@font/sf_medium"
+                android:stateListAnimator="@null"
+                android:text="Go back"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnBack"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/corner_login"
-                    android:backgroundTint="@color/main_color"
-                    android:text="Go Back"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
-
-                </androidx.appcompat.widget.AppCompatButton>
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-        </LinearLayout>
-    </ScrollView>
-
-
-
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnRemove"
+                android:layout_width="245dp"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="35dp"
+                android:background="@drawable/btn_dark"
+                android:elevation="0dp"
+                android:fontFamily="@font/sf_medium"
+                android:stateListAnimator="@null"
+                android:text="Remove from favorites"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

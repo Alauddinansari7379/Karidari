@@ -223,13 +223,6 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.fragment_Home)
                     true
                 }
-
-                R.id.fragment_categories -> {
-                    // Navigate to Categories fragment or perform action
-                    navController.navigate(R.id.fragment_categories)
-                    true
-                }
-
                 R.id.fragment_account -> {
                     // Navigate to Account fragment or perform action
                     navController.navigate(R.id.fragment_account)
@@ -246,65 +239,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-/*
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                R.id.fragment_Home -> {
-                    binding.imDelete.visibility = View.GONE
-                    binding.SearchView.text.clear()
-                    binding.imgSearch.visibility = View.VISIBLE
-                    binding.layoutSearch.visibility = View.GONE
-                    binding.layoutTitle.visibility = View.VISIBLE
-                }
 
-                R.id.fragment_categories -> {
-                    binding.imDelete.visibility = View.GONE
-                    binding.SearchView.text.clear()
-                    binding.imgSearch.visibility = View.GONE
-                    binding.layoutSearch.visibility = View.GONE
-                    binding.layoutTitle.visibility = View.VISIBLE
-                }
-
-                R.id.fragment_account -> {
-                    binding.imDelete.visibility = View.GONE
-                    binding.SearchView.text.clear()
-                    binding.layoutSearch.visibility = View.GONE
-                    binding.imgSearch.visibility = View.GONE
-                    binding.layoutTitle.visibility = View.VISIBLE
-
-                    if (sessionManager.authTokenUser!!.isEmpty()) {
-                        try {
-                            bottomSheetDialog.show()
-                        } catch (e: Exception) {
-                            e.printStackTrace()
-                        }
-                    }
-                }
-
-                R.id.fragment_cart -> {
-                    binding.imDelete.visibility = View.VISIBLE
-                    binding.SearchView.text.clear()
-                    binding.imgSearch.visibility = View.GONE
-                    binding.layoutSearch.visibility = View.GONE
-                    binding.layoutTitle.visibility = View.VISIBLE
-                }
-            }
-        }
-*/
-
-    }
-    private fun setFragment(fragment: Fragment, tag: String) {
-        // Begin the fragment transaction
-        val transaction = supportFragmentManager.beginTransaction()
-
-        // Replace the existing fragment with the new one
-        transaction.replace(R.id.hostFragment, fragment, tag)
-
-        // Optionally add the transaction to the backstack (if you want to go back to the previous fragment)
-        transaction.addToBackStack(null)
-
-        // Commit the transaction
-        transaction.commit()
     }
 
 

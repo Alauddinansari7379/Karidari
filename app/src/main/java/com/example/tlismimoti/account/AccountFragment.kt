@@ -63,9 +63,10 @@ class AccountFragment : Fragment() {
         with(binding) {
 
             if (sessionManager.userName!!.isNotEmpty()) {
-                userName.text = sessionManager.userName
+                tvFullName.text = sessionManager.userName
+                tvEmail.text = sessionManager.email
             }
-            cardOrders.setOnClickListener {
+            layoutTransactionHistory.setOnClickListener {
                 if (sessionManager.authTokenUser!!.isEmpty()) {
                     try {
                         bottomSheetDialog.show()
@@ -77,7 +78,7 @@ class AccountFragment : Fragment() {
                 }
             }
 
-            cardSetting.setOnClickListener {
+            layoutSettings.setOnClickListener {
                 if (sessionManager.authTokenUser!!.isEmpty()) {
                     try {
                         bottomSheetDialog.show()
@@ -89,7 +90,7 @@ class AccountFragment : Fragment() {
                 }
             }
 
-            cardWishlist.setOnClickListener {
+            layoutFavoriteOutfits.setOnClickListener {
                 if (sessionManager.authTokenUser!!.isEmpty()) {
                     try {
                         bottomSheetDialog.show()
@@ -99,27 +100,6 @@ class AccountFragment : Fragment() {
                 }else {
                     startActivity(Intent(requireContext(), Wishlist::class.java))
                 }
-            }
-
-            cardHelp.setOnClickListener {
-                // startActivity(Intent(requireContext(),HelpCenter::class.java))
-            }
-            cartRefer.setOnClickListener {
-//                if (sessionManager.authTokenUser!!.isNotEmpty()) {
-//                    try {
-//                        bottomSheetDialog.show()
-//                    } catch (e: Exception) {
-//                        e.printStackTrace()
-//                    }
-//                }
-//
-//                val imgClose = parentView.findViewById<ImageView>(R.id.imgBackDilRefer)
-////                val login = parentView.findViewById<Button>(R.id.btnLoginDil)
-////                val signUp = parentView.findViewById<Button>(R.id.btnSignUpDil)
-//
-//                imgClose.setOnClickListener {
-//                    bottomSheetDialog.dismiss()
-//                }
             }
         }
     }

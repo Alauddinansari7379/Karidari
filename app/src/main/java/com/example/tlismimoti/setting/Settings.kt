@@ -19,6 +19,7 @@ import com.example.tlismimoti.mainActivity.ModelDestoryCart
 import com.example.tlismimoti.retrofit.ApiClient
 import com.example.tlismimoti.setting.model.ModelSetting
 import com.example.tlismimoti.sharedpreferences.SessionManager
+import com.example.tlismimoti.wishlist.Wishlist
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -51,6 +52,10 @@ class Settings : AppCompatActivity() {
             }
             imgBack.setOnClickListener {
                 onBackPressed()
+            }
+
+            layoutFavoriteOutfits.setOnClickListener {
+                startActivity(Intent(context,Wishlist::class.java))
             }
 
             cardTerm.setOnClickListener {
