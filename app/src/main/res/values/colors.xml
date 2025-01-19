@@ -11,4 +11,36 @@
     <color name="main_color">#1da0f2</color>
     <color name="white">#FFFFFFFF</color>
     <color name="category_color">#FFE0E1</color>
+    <color name="dark_purple">#0C0D34</color>
+    <color name="transparent">#00FFFFFF</color>
+
+    <!--new added-->
+
+
+
+    <color name="light_black">#1A1B45</color>
+    <color name="pur_200">#F3F0EF</color>
+    <color name="dark_gray">#8A8D90</color>
+    <color name="light_gray">#E2E2E2</color>
+    <color name="white_transparent">#3CFFFFFF</color>
+    <color name="white_transparent2">#20FFFFFF</color>
+
+    <color name="green_900">#2CB9B0</color>
+    <color name="green_200">#C9E9E7</color>
+    <color name="green_100">#1A2CB9B0</color>
+    <color name="dim_purple">#0D0C0D34</color>
+    <color name="red">#FF0000</color>
+    <color name="gray">#AEADBB</color>
+    <color name="orange_200">#FFC641</color>
+    <color name="red_200">#FE5E33</color>
+    <color name="white_200">#FAFAFA</color>
+    <color name="white_400">#F4F3F3</color>
+    <color name="pink">#EB5B90</color>
+
+    <array name="colors_array">
+        <item>@color/white</item>
+        <item>@color/black</item>
+        <item>@color/white</item>
+        <item>@color/black</item>
+    </array>
 </resources>
