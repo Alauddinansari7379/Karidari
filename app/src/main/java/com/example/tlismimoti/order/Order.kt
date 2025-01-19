@@ -26,7 +26,7 @@ class Order : AppCompatActivity() {
         sessionManager = SessionManager(context)
 
         with(binding){
-            imgBack.setOnClickListener {
+            btnBack.setOnClickListener {
                 onBackPressed()
             }
         }

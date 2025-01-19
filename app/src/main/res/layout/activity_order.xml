@@ -1,58 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_background"
+    android:background="@color/white"
     tools:context=".order.Order">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_gravity="center"
-        android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="325dp"
+        android:src="@drawable/bg_shape1"
+        android:scaleType="fitXY"/>
 
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="25dp"
+        android:paddingHorizontal="15dp">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imgBack"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:background="?actionBarItemBackground"
-            android:padding="5dp"
-            android:src="@drawable/baseline_arrow_back_24"
-            android:tint="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <RelativeLayout
+            android:id="@+id/btnBack"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_centerVertical="true">
 
-        </androidx.appcompat.widget.AppCompatImageView>
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_back"
+                app:tint="@color/white" />
+        </RelativeLayout>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/appCompatTextView2"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="start"
-            android:text="@string/orders"
-            android:textColor="@color/black"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/sf_medium"
+            android:text="EDIT PROFILE"
+            android:textColor="@color/white"
             android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </androidx.appcompat.widget.AppCompatTextView>
+            android:textStyle="bold" />
+    </RelativeLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
@@ -61,9 +54,9 @@
         android:layout_margin="30dp"
         android:background="@drawable/tabcorner"
         android:backgroundTint="#E7EDF5"
+        android:layout_below="@+id/header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
         app:tabGravity="fill"
         app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
         app:tabIndicator="@drawable/tabcorner"
@@ -73,17 +66,12 @@
         app:tabMode="fixed"
         app:tabSelectedTextColor="@color/white"
         app:tabTextColor="@android:color/black" />
-
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabs">
-
-    </androidx.viewpager.widget.ViewPager>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="15dp"
+        android:layout_below="@+id/tabs"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+</RelativeLayout>
