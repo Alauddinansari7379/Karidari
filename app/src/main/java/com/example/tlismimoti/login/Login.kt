@@ -62,6 +62,9 @@ class Login : AppCompatActivity() {
             tvForgot.setOnClickListener {
                // startActivity(Intent(this@Login, SignUp::class.java))
             }
+            btnSignup.setOnClickListener {
+                startActivity(Intent(this@Login,SignUp::class.java))
+            }
             btnLogIn.setOnClickListener {
                 if (edtUserName.text!!.isEmpty()) {
                     edtUserName.error = "Enter Username"

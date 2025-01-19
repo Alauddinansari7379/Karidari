@@ -111,7 +111,7 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/bg_input_selector"
-            android:drawableStart="@drawable/lock_tint_selector"
+            android:drawableStart="@drawable/email_tint_selector"
             android:drawablePadding="10dp"
             android:fontFamily="@font/sf_medium"
             android:gravity="center_vertical"

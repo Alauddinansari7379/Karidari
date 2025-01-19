@@ -45,6 +45,9 @@ class SignUp : AppCompatActivity() {
 //                //binding.passwordEdt.transformationMethod =PasswordTransformationMethod(false)
 //                //binding.passwordToggle.sw
 //            }
+            btnLogin.setOnClickListener {
+                startActivity(Intent(this@SignUp,Login::class.java))
+            }
             btnSignUp.setOnClickListener {
                 if (edtFullName.text!!.isEmpty()) {
                     edtFullName.error = "Enter Full Name"

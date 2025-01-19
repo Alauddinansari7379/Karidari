@@ -1,126 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".wishlist.Wishlist">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
+    <RelativeLayout
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_gravity="center"
-        android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="25dp"
+        android:paddingHorizontal="15dp">
 
+        <RelativeLayout
+            android:id="@+id/btnBack"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_centerVertical="true">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imgBack"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:background="?actionBarItemBackground"
-            android:padding="5dp"
-            android:src="@drawable/baseline_arrow_back_24"
-            android:tint="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/baseline_arrow_back_24" />
+        </RelativeLayout>
 
-        </androidx.appcompat.widget.AppCompatImageView>
+        <RelativeLayout
+            android:id="@+id/btnCancel"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_centerVertical="true"
+            android:visibility="gone">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/appCompatTextView2"
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/baseline_close_24"
+                app:tint="@color/dark_purple" />
+        </RelativeLayout>
+
+        <!--        <RelativeLayout-->
+        <!--            android:id="@+id/btnSelectAll"-->
+        <!--            android:layout_width="44dp"-->
+        <!--            android:layout_height="44dp"-->
+        <!--            android:layout_centerVertical="true"-->
+        <!--            android:visibility="gone">-->
+
+        <!--            <ImageView-->
+        <!--                android:layout_width="20dp"-->
+        <!--                android:layout_height="20dp"-->
+        <!--                android:layout_centerInParent="true"-->
+        <!--                android:src="@drawable/ic_select" />-->
+        <!--        </RelativeLayout>-->
+
+        <TextView
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="start"
-            android:text="@string/wishlist"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="11sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/sf_medium"
+            android:text="FAVORITE OUTFITS"
+            android:textColor="@color/dark_purple"
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
-        </androidx.appcompat.widget.AppCompatTextView>
+        <RelativeLayout
+            android:id="@+id/btnEdit"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:visibility="gone"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true">
 
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_edit" />
+        </RelativeLayout>
 
+        <!--        <RelativeLayout-->
+        <!--            android:id="@+id/btnCancel"-->
+        <!--            android:layout_width="44dp"-->
+        <!--            android:layout_height="44dp"-->
+        <!--            android:layout_alignParentEnd="true"-->
+        <!--            android:layout_centerVertical="true"-->
+        <!--            android:visibility="gone">-->
 
+        <!--            <ImageView-->
+        <!--                android:layout_width="20dp"-->
+        <!--                android:layout_height="20dp"-->
+        <!--                android:layout_centerInParent="true"-->
+        <!--                android:src="@drawable/ic_close"-->
+        <!--                app:tint="@color/dark_purple" />-->
+        <!--        </RelativeLayout>-->
+    </RelativeLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
-
-        <ScrollView
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:scrollbars="none">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="none">
-
-            <LinearLayout
+            android:layout_marginHorizontal="20dp"
+            android:orientation="vertical">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="@color/gray_text"
-                android:orientation="vertical">
-
-                <com.facebook.shimmer.ShimmerFrameLayout
-                    android:id="@+id/shimmer_listing"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <include layout="@layout/shimmer_effect_listing"></include>
-
-                        <include layout="@layout/shimmer_effect_listing"></include>
-
-                        <include layout="@layout/shimmer_effect_listing"></include>
-
-                        <include layout="@layout/shimmer_effect_listing"></include>
-
-                        <include layout="@layout/shimmer_effect_listing"></include>
-
-                    </LinearLayout>
-
-                </com.facebook.shimmer.ShimmerFrameLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
-
-                </androidx.recyclerview.widget.RecyclerView>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="110dp">
-
-                </LinearLayout>
-            </LinearLayout>
-
-        </ScrollView>
-    </LinearLayout>
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                app:spanCount="2"
+                tools:listitem="@layout/item_favoutfit"
+                android:orientation="vertical"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="145dp"/>
+        </LinearLayout>
+    </ScrollView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bg_shape2">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAddMore"
+            android:layout_width="245dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="35dp"
+            android:background="@drawable/btn_dark"
+            android:elevation="0dp"
+            android:fontFamily="@font/sf_medium"
+            android:stateListAnimator="@null"
+            android:text="Add more to favorites"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnRemove"
+            android:layout_width="245dp"
+            android:layout_height="50dp"
+            android:visibility="gone"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="35dp"
+            android:background="@drawable/btn_dark"
+            android:elevation="0dp"
+            android:fontFamily="@font/sf_medium"
+            android:stateListAnimator="@null"
+            android:text="Remove from favorites"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+    </RelativeLayout>
+</RelativeLayout>

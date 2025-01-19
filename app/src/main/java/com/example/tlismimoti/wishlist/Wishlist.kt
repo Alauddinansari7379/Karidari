@@ -1,5 +1,6 @@
 package com.example.tlismimoti.wishlist
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.tlismimoti.Helper.AppProgressBar
 import com.example.tlismimoti.Helper.myToast
 import com.example.tlismimoti.databinding.ActivityWishlistBinding
+import com.example.tlismimoti.listing.DetailPage
+import com.example.tlismimoti.mainActivity.MainActivity
+import com.example.tlismimoti.mainActivity.MainActivity.Companion.listing
 import com.example.tlismimoti.retrofit.ApiClient
 import com.example.tlismimoti.sharedpreferences.SessionManager
 import com.example.tlismimoti.wishlist.adapter.AdapterWishlist
@@ -32,8 +36,15 @@ class Wishlist : AppCompatActivity() {
         }else{
             myToast(this@Wishlist,"User not logged in")
         }
-        binding.imgBack.setOnClickListener {
+        binding.btnBack.setOnClickListener {
             onBackPressed()
+        }
+//        binding.btnAddMore.setOnClickListener { startActivity(Intent(this@Wishlist,DetailPage::class.java)) }
+        binding.btnAddMore.setOnClickListener {
+            listing = true // Set the flag
+            val intent = Intent(this@Wishlist, MainActivity::class.java)
+            intent.putExtra("navigate_to", "fragment_home")
+            startActivity(intent)
         }
 
     }
@@ -53,7 +64,7 @@ class Wishlist : AppCompatActivity() {
                                 AdapterWishlist(context, response.body()!!.data.items)
 
                             myToast(context, "No Product Found")
-                            binding.shimmerListing.visibility = View.GONE
+//                            binding.shimmerListing.visibility = View.GONE
                             AppProgressBar.hideLoaderDialog()
 
                         } else {
@@ -63,7 +74,7 @@ class Wishlist : AppCompatActivity() {
                             binding!!.recyclerView.layoutManager =
                                 GridLayoutManager(context, 2)
 
-                            binding.shimmerListing.visibility = View.GONE
+//                            binding.shimmerListing.visibility = View.GONE
                             AppProgressBar.hideLoaderDialog()
 
 

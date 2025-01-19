@@ -23,7 +23,7 @@ class AdapterWishlist(val context: Context, private val list: ArrayList<Item>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
-            LayoutInflater.from(context).inflate(R.layout.single_row_listing, parent, false)
+            LayoutInflater.from(context).inflate(R.layout.item_favoutfit, parent, false)
         )
     }
 
@@ -31,8 +31,8 @@ class AdapterWishlist(val context: Context, private val list: ArrayList<Item>) :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         // holder.SrNo.text= "${position+1}"
         sessionManager=SessionManager(context)
-        holder.tvTitle.text = list[position].term_title
-        holder.tvPricePro.text = "${sessionManager.currency}" + list[position].price
+//        holder.tvTitle.text = list[position].term_title
+//        holder.tvPricePro.text = "${sessionManager.currency}" + list[position].price
         // holder.tvRatingPro.text = list[position].title
         if (list[position].preview != null) {
             Picasso.get().load("http:" + list[position].preview)
@@ -57,8 +57,8 @@ class AdapterWishlist(val context: Context, private val list: ArrayList<Item>) :
 
     open class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imgPro: ImageView = itemView.findViewById(R.id.imageLis)
-        val tvTitle: TextView = itemView.findViewById(R.id.tvTitle)
-        val tvPricePro: TextView = itemView.findViewById(R.id.priceLis)
+//        val tvTitle: TextView = itemView.findViewById(R.id.tvTitle)
+//        val tvPricePro: TextView = itemView.findViewById(R.id.priceLis)
 //        val tvRatingPro: TextView = itemView.findViewById(R.id.tvRatingPro)
 //        val tvDescPro: TextView = itemView.findViewById(R.id.tvDescPro)
 

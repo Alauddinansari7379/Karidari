@@ -2,7 +2,6 @@ package com.example.tlismimoti.listing
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Color
 import android.graphics.Paint
 import android.os.Bundle
 import android.util.Log
@@ -10,33 +9,36 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import com.amtech.mehfeel.category.model.ChildrenCategory
 import com.example.tlismimoti.Helper.AppProgressBar
 import com.example.tlismimoti.Helper.myToast
 import com.example.tlismimoti.Helper.vibrateOnce
 import com.example.tlismimoti.R
+import com.example.tlismimoti.cart.CartFragment
 import com.example.tlismimoti.databinding.ActivityDetailPageBinding
-import com.example.tlismimoti.home.adapter.AdapterProduct
+import com.example.tlismimoti.home.adapter.MultipleSizeAdapter
+import com.example.tlismimoti.home.adapter.ProductColorsAdapter
+import com.example.tlismimoti.home.adapter.ProductsAdapter
 import com.example.tlismimoti.home.model.DataX
 import com.example.tlismimoti.home.model.ModelProduct
 import com.example.tlismimoti.listing.adapter.AdapterListing
 import com.example.tlismimoti.listing.model.Data
 import com.example.tlismimoti.listing.model.ModelProductDetial
 import com.example.tlismimoti.listing.model.cartModel.ModelCart
-import com.example.tlismimoti.login.Login
+import com.example.tlismimoti.mainActivity.MainActivity
+import com.example.tlismimoti.mainActivity.MainActivity.Companion.listing
 import com.example.tlismimoti.mainActivity.ModelDestoryCart
 import com.example.tlismimoti.retrofit.ApiClient
 import com.example.tlismimoti.sharedpreferences.SessionManager
 import com.example.tlismimoti.wishlist.model.ModelWishListId
 import com.example.tlismimoti.wishlist.model.ModelWishlist
+import com.ncorti.slidetoact.SlideToActView
 import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.String
 import kotlin.Exception
 import kotlin.Throwable
 import kotlin.plus
@@ -62,6 +64,8 @@ class DetailPage : AppCompatActivity() {
     var price = ""
     var option = ""
     var variation = ""
+    private lateinit var mSizeAdapter: MultipleSizeAdapter
+    private lateinit var mColorsAdapter: ProductColorsAdapter
 
 
     @SuppressLint("ResourceAsColor")
@@ -84,48 +88,48 @@ class DetailPage : AppCompatActivity() {
             imgBack.setOnClickListener {
                 onBackPressed()
             }
-            btnAddToCart.setOnClickListener {
-                startActivity(Intent(this@DetailPage, Login::class.java))
-            }
-            colBlack.setOnClickListener {
-                tvColourName.text = "Black"
-                colBlack.background = ContextCompat.getDrawable(context, R.drawable.ring_bg)
-                colRed.background = ContextCompat.getDrawable(context, R.drawable.red_dot)
-                colBlue.background = ContextCompat.getDrawable(context, R.drawable.green_dot)
-            }
-            colRed.setOnClickListener {
-                tvColourName.text = "Red"
-                colBlack.background = ContextCompat.getDrawable(context, R.drawable.black_dot)
-                colRed.background = ContextCompat.getDrawable(context, R.drawable.ring_bg)
-                colBlue.background = ContextCompat.getDrawable(context, R.drawable.green_dot)
-            }
-            colBlue.setOnClickListener {
-                tvColourName.text = "Green"
-                colBlack.background = ContextCompat.getDrawable(context, R.drawable.black_dot)
-                colRed.background = ContextCompat.getDrawable(context, R.drawable.red_dot)
-                colBlue.background = ContextCompat.getDrawable(context, R.drawable.ring_bg)
-            }
-
-            layoutSmall.setOnClickListener {
-                tvSamll.setTextColor(Color.parseColor("#99C354"))
-                tvMedium.setTextColor(Color.parseColor("#FF000000"))
-                tvLarge.setTextColor(Color.parseColor("#FF000000"))
-            }
-
-            layoutMedium.setOnClickListener {
-                tvMedium.setTextColor(Color.parseColor("#99C354"))
-                tvSamll.setTextColor(Color.parseColor("#FF000000"))
-                tvLarge.setTextColor(Color.parseColor("#FF000000"))
-            }
-            layoutLarge.setOnClickListener {
-                tvLarge.setTextColor(Color.parseColor("#99C354"))
-                tvSamll.setTextColor(Color.parseColor("#FF000000"))
-                tvMedium.setTextColor(Color.parseColor("#FF000000"))
-            }
+//            btnAddToCart.setOnClickListener {
+//                startActivity(Intent(this@DetailPage, Login::class.java))
+//            }
+//            colBlack.setOnClickListener {
+//                tvColourName.text = "Black"
+//                colBlack.background = ContextCompat.getDrawable(context, R.drawable.ring_bg)
+//                colRed.background = ContextCompat.getDrawable(context, R.drawable.red_dot)
+//                colBlue.background = ContextCompat.getDrawable(context, R.drawable.green_dot)
+//            }
+//            colRed.setOnClickListener {
+//                tvColourName.text = "Red"
+//                colBlack.background = ContextCompat.getDrawable(context, R.drawable.black_dot)
+//                colRed.background = ContextCompat.getDrawable(context, R.drawable.ring_bg)
+//                colBlue.background = ContextCompat.getDrawable(context, R.drawable.green_dot)
+//            }
+//            colBlue.setOnClickListener {
+//                tvColourName.text = "Green"
+//                colBlack.background = ContextCompat.getDrawable(context, R.drawable.black_dot)
+//                colRed.background = ContextCompat.getDrawable(context, R.drawable.red_dot)
+//                colBlue.background = ContextCompat.getDrawable(context, R.drawable.ring_bg)
+//            }
+//
+//            layoutSmall.setOnClickListener {
+//                tvSamll.setTextColor(Color.parseColor("#99C354"))
+//                tvMedium.setTextColor(Color.parseColor("#FF000000"))
+//                tvLarge.setTextColor(Color.parseColor("#FF000000"))
+//            }
+//
+//            layoutMedium.setOnClickListener {
+//                tvMedium.setTextColor(Color.parseColor("#99C354"))
+//                tvSamll.setTextColor(Color.parseColor("#FF000000"))
+//                tvLarge.setTextColor(Color.parseColor("#FF000000"))
+//            }
+//            layoutLarge.setOnClickListener {
+//                tvLarge.setTextColor(Color.parseColor("#99C354"))
+//                tvSamll.setTextColor(Color.parseColor("#FF000000"))
+//                tvMedium.setTextColor(Color.parseColor("#FF000000"))
+//            }
             layoutPlush.setOnClickListener {
                 vibrateOnce(context)
                 itemCount++
-                tvCount.text = String.valueOf(itemCount)
+                tvCount.text = "${itemCount}"
             }
 
             layoutDelete.setOnClickListener {
@@ -133,14 +137,32 @@ class DetailPage : AppCompatActivity() {
                     if (itemCount != 0) {
                         itemCount--
                         vibrateOnce(context)
-                        tvCount.text = String.valueOf(itemCount)
+                        tvCount.text = "${itemCount}"
                     }
                 }
             }
-            btnAddToCart.setOnClickListener {
-                apiCallAddToCart()
+//            btnAddToCart.setOnClickListener {
+//                apiCallAddToCart()
+//            }
+            /*btnCart.setOnClickListener {
+                val cartFragment = CartFragment()
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, cartFragment) // Replace existing fragment/view
+                    .addToBackStack(null) // Add to back stack for navigation
+                    .commit()
+            }*/
+            btnCart.setOnClickListener {
+                listing = true // Set the flag
+                val intent = Intent(this@DetailPage, MainActivity::class.java)
+                intent.putExtra("navigate_to", "fragment_cart")
+                startActivity(intent)
             }
 
+            binding.btnAddToCart.onSlideCompleteListener = object: SlideToActView.OnSlideCompleteListener{
+                override fun onSlideComplete(view: SlideToActView) {
+                    apiCallAddToCart()
+                }
+            }
             wishList.setOnClickListener {
                 if (sessionManager.authTokenUser!!.isNotEmpty()) {
                     apiCallAddToWishList()
@@ -217,6 +239,7 @@ class DetailPage : AppCompatActivity() {
                                     .placeholder(R.drawable.placeholder_n).stableKey("id")
                                     .into(binding.image)
                             }
+                            //somenath
                             try {
                                 var list = ArrayList<ChildrenCategory>()
                                 for (i in response.body()?.data?.info!!.options) {
@@ -229,17 +252,20 @@ class DetailPage : AppCompatActivity() {
                                         items[i] = list[i].name
                                     }
                                     if (list.isEmpty()) {
-                                        binding.lLayoutSpinner.visibility = View.GONE
+                                        binding.sizeSelectionRecycler.visibility = View.GONE
+                                        binding.tvSizeTitle.visibility = View.GONE
 
                                     }
+                                    mSizeAdapter = MultipleSizeAdapter(items)
+                                    binding.sizeSelectionRecycler.adapter = mSizeAdapter
 
-                                    // Create an ArrayAdapter using the state names
-                                    val adapter: ArrayAdapter<kotlin.String?> = ArrayAdapter(
-                                        context, R.layout.simple_list_item_1, items
-                                    )
+//                                    // Create an ArrayAdapter using the state names
+//                                    val adapter: ArrayAdapter<kotlin.String?> = ArrayAdapter(
+//                                        context, R.layout.simple_list_item_1, items
+//                                    )
 
                                     // Set the adapter to the spinner
-                                    binding.spinnerVariant.adapter = adapter
+//                                    binding.spinnerVariant.adapter = adapter
 
                                     // Set the default selection
 //                            val relationId = "Some default relation id" // Replace with your default relation id if available
@@ -249,29 +275,29 @@ class DetailPage : AppCompatActivity() {
                                     AppProgressBar.hideLoaderDialog()
 
                                     // Set the item selected listener for the spinner
-                                    binding.spinnerVariant.onItemSelectedListener =
-                                        object : AdapterView.OnItemSelectedListener {
-                                            @SuppressLint("SuspiciousIndentation")
-                                            override fun onItemSelected(
-                                                adapterView: AdapterView<*>?,
-                                                view: View?,
-                                                position: Int,
-                                                id: Long
-                                            ) {
-                                                val rprice = list[position].rprice
-                                                option = list[position].id.toString()
-                                                if (rprice != null) {
-                                                    binding.tvPrice.text =  "${sessionManager.currency}"+ rprice
-                                                    price = rprice
-                                                }
-
-
-                                            }
-
-                                            override fun onNothingSelected(adapterView: AdapterView<*>?) {
-                                                // Handle the case when nothing is selected, if needed
-                                            }
-                                        }
+//                                    binding.spinnerVariant.onItemSelectedListener =
+//                                        object : AdapterView.OnItemSelectedListener {
+//                                            @SuppressLint("SuspiciousIndentation")
+//                                            override fun onItemSelected(
+//                                                adapterView: AdapterView<*>?,
+//                                                view: View?,
+//                                                position: Int,
+//                                                id: Long
+//                                            ) {
+//                                                val rprice = list[position].rprice
+//                                                option = list[position].id.toString()
+//                                                if (rprice != null) {
+//                                                    binding.tvPrice.text =  "${sessionManager.currency}"+ rprice
+//                                                    price = rprice
+//                                                }
+//
+//
+//                                            }
+//
+//                                            override fun onNothingSelected(adapterView: AdapterView<*>?) {
+//                                                // Handle the case when nothing is selected, if needed
+//                                            }
+//                                        }
                                 } else {
                                     // Handle the case when list is null
                                     // myToast(context, "No data found")
@@ -294,17 +320,20 @@ class DetailPage : AppCompatActivity() {
                                         items[i] = list[i].variation.name
                                     }
                                     if (list.isEmpty()) {
-                                        binding.lLayoutAttribute.visibility = View.GONE
+                                        binding.colorSelectionRecycler.visibility = View.GONE
+                                        binding.tvColorTitle.visibility = View.GONE
 
                                     }
+                                    mColorsAdapter = ProductColorsAdapter(items)
+                                    binding.colorSelectionRecycler.adapter = mSizeAdapter
 
                                     // Create an ArrayAdapter using the state names
-                                    val adapter: ArrayAdapter<kotlin.String?> = ArrayAdapter(
-                                        context, R.layout.simple_list_item_1, items
-                                    )
-
-                                    // Set the adapter to the spinner
-                                    binding.spinnerVariantNew.adapter = adapter
+//                                    val adapter: ArrayAdapter<kotlin.String?> = ArrayAdapter(
+//                                        context, R.layout.simple_list_item_1, items
+//                                    )
+//
+//                                    // Set the adapter to the spinner
+//                                    binding.spinnerVariantNew.adapter = adapter
 
                                     // Set the default selection
 //                            val relationId = "Some default relation id" // Replace with your default relation id if available
@@ -314,28 +343,28 @@ class DetailPage : AppCompatActivity() {
                                     AppProgressBar.hideLoaderDialog()
 
                                     // Set the item selected listener for the spinner
-                                    binding.spinnerVariantNew.onItemSelectedListener =
-                                        object : AdapterView.OnItemSelectedListener {
-                                            @SuppressLint("SuspiciousIndentation")
-                                            override fun onItemSelected(
-                                                adapterView: AdapterView<*>?,
-                                                view: View?,
-                                                position: Int,
-                                                id: Long
-                                            ) {
-                                                variation = list[position].variation.id.toString()
-//                                                if (rprice != null) {
-//                                                    binding.tvPrice.text = "$sessionManager.currency" + rprice
-//                                                    price = rprice
-//                                                }
-
-
-                                            }
-
-                                            override fun onNothingSelected(adapterView: AdapterView<*>?) {
-                                                // Handle the case when nothing is selected, if needed
-                                            }
-                                        }
+//                                    binding.spinnerVariantNew.onItemSelectedListener =
+//                                        object : AdapterView.OnItemSelectedListener {
+//                                            @SuppressLint("SuspiciousIndentation")
+//                                            override fun onItemSelected(
+//                                                adapterView: AdapterView<*>?,
+//                                                view: View?,
+//                                                position: Int,
+//                                                id: Long
+//                                            ) {
+//                                                variation = list[position].variation.id.toString()
+////                                                if (rprice != null) {
+////                                                    binding.tvPrice.text = "$sessionManager.currency" + rprice
+////                                                    price = rprice
+////                                                }
+//
+//
+//                                            }
+//
+//                                            override fun onNothingSelected(adapterView: AdapterView<*>?) {
+//                                                // Handle the case when nothing is selected, if needed
+//                                            }
+//                                        }
                                 } else {
                                     // Handle the case when list is null
                                     // myToast(context, "No data found")
@@ -345,7 +374,7 @@ class DetailPage : AppCompatActivity() {
                                 myToast(context, "Something went wrong")
                                 AppProgressBar.hideLoaderDialog()
                             }
-
+//                            somenath
 //                            binding!!.recyclerView.adapter = AdapterListing(context, response.body()!!.data.posts.data)
 //                            binding!!.recyclerView.layoutManager =
 //                                GridLayoutManager(context, 2)
@@ -492,7 +521,7 @@ class DetailPage : AppCompatActivity() {
                             }
                             count=0
                             binding!!.recyclerViewMen.adapter =
-                                AdapterProduct(context, mainList)
+                                ProductsAdapter(context, mainList)
 //                            binding!!.recyclerViewMen.layoutManager =
 //                                GridLayoutManager(context, 2)
                             AppProgressBar.hideLoaderDialog()
