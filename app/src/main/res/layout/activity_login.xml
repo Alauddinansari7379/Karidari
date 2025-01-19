@@ -216,6 +216,10 @@
                 android:textColor="@color/white"
                 android:textSize="15sp" />
 
+
+
+
+
             <TextView
                 android:id="@+id/btnSignup"
                 android:layout_width="wrap_content"
