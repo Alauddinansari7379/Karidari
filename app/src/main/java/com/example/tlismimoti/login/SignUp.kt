@@ -30,21 +30,21 @@ class SignUp : AppCompatActivity() {
         setContentView(binding.root)
         sessionManager = SessionManager(context)
         with(binding) {
-            imgBack.setOnClickListener {
-                onBackPressed()
-            }
-            passwordToggle.setOnClickListener {
-                passwordToggleOff.visibility = View.VISIBLE
-                passwordToggle.visibility = View.GONE
-                edtPassword.transformationMethod = PasswordTransformationMethod()
-            }
-            passwordToggleOff.setOnClickListener {
-                passwordToggleOff.visibility = View.GONE
-                passwordToggle.visibility = View.VISIBLE
-                edtPassword.transformationMethod = null
-                //binding.passwordEdt.transformationMethod =PasswordTransformationMethod(false)
-                //binding.passwordToggle.sw
-            }
+//            imgBack.setOnClickListener {
+//                onBackPressed()
+//            }
+//            passwordToggle.setOnClickListener {
+//                passwordToggleOff.visibility = View.VISIBLE
+//                passwordToggle.visibility = View.GONE
+//                edtPassword.transformationMethod = PasswordTransformationMethod()
+//            }
+//            passwordToggleOff.setOnClickListener {
+//                passwordToggleOff.visibility = View.GONE
+//                passwordToggle.visibility = View.VISIBLE
+//                edtPassword.transformationMethod = null
+//                //binding.passwordEdt.transformationMethod =PasswordTransformationMethod(false)
+//                //binding.passwordToggle.sw
+//            }
             btnSignUp.setOnClickListener {
                 if (edtFullName.text!!.isEmpty()) {
                     edtFullName.error = "Enter Full Name"
