@@ -141,6 +141,7 @@
                         android:layout_marginBottom="2dp"
                         android:background="@drawable/corner"
                         android:backgroundTint="#F8F8F8"
+                        android:visibility="gone"
                         android:orientation="horizontal">
 
                         <androidx.appcompat.widget.AppCompatImageView
@@ -170,6 +171,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10sp"
                         android:layout_marginEnd="10sp"
+                        android:layout_marginTop="9dp"
                         android:orientation="horizontal">
 
 

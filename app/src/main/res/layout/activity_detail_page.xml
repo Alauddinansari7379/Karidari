@@ -317,7 +317,7 @@
                 android:backgroundTint="@color/green_900"
                 android:fontFamily="@font/sf_bold"
                 android:gravity="center"
-                android:text="5"
+                android:text="0"
                 android:textColor="@color/white"
                 android:textSize="8sp" />
         </RelativeLayout>
@@ -360,7 +360,7 @@
                 android:backgroundTint="@android:color/transparent"
                 android:fontFamily="@font/sf_bold"
                 android:gravity="center"
-                android:text="5"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="8sp" />
         </RelativeLayout>

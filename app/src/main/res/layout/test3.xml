@@ -1,40 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
->
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="575dp"
-        android:src="@drawable/bg_shape1"
-        android:scaleType="fitXY"/>
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".home.activity.HomeFragment">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="15dp">
+        android:scrollbars="none">
 
-        <RelativeLayout
-            android:id="@+id/btnBack"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true">
+            android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/categoryRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="9dp"
+                android:layout_marginTop="15dp"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_category" />
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
-                android:layout_below="@id/categoryRecycler"
                 android:layout_margin="15dp"
                 app:cardCornerRadius="10dp">
 
@@ -49,27 +43,6 @@
                     app:iss_period="1000" />
 
             </androidx.cardview.widget.CardView>
-        </RelativeLayout>
-
-
-    </RelativeLayout>
-
-
-
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="355dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/layoutTopTre"
                 android:layout_width="match_parent"
@@ -1355,6 +1328,6 @@
         </LinearLayout>
     </ScrollView>
 
+</LinearLayout>
 
 
-</RelativeLayout>

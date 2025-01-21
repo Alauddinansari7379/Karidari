@@ -111,7 +111,7 @@
                 android:layout_below="@id/toolbar"
                 android:fontFamily="@font/sf_medium"
                 android:gravity="center"
-                android:text="Select Shipping Address"
+                android:text="Enter Shipping Address"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
