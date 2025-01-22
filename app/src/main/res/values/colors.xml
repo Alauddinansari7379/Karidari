@@ -36,6 +36,9 @@
     <color name="white_200">#FAFAFA</color>
     <color name="white_400">#F4F3F3</color>
     <color name="pink">#EB5B90</color>
+    <color name="bottomNavigationBackground">#2A2E43</color>
+    <color name="bottomNavigationSelectedColor">#4C57DE</color>
+    <color name="bottomNavigationTintColor">#B2B2B2</color>
 
     <array name="colors_array">
         <item>@color/white</item>

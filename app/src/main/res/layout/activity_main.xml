@@ -117,7 +117,7 @@
             app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
             app:navGraph="@navigation/app_navigation" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
+        <!--<com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -131,7 +131,24 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/bootom_nav_menu" />
+            app:menu="@menu/bootom_nav_menu" />-->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        style="@style/BottomNavigationStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?selectableItemBackground"
+        app:elevation="10dp"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bootom_nav_menu">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
 

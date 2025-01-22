@@ -145,7 +145,7 @@ class SearchActivity : AppCompatActivity() {
                 override fun onFailure(call: Call<ModelProduct>, t: Throwable) {
                     //myToast(requireActivity(), "Something went wrong")
                     count++
-                    if (count <= 2) {
+                    if (count <= 10) {
                         Log.e("count", count.toString())
                         apiCallSearchProduct(name)
                     } else {
