@@ -12,7 +12,7 @@
             android:id="@+id/toolBar"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:visibility="gone"
+            android:visibility="visible"
             android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -70,6 +70,7 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="65dp"
                     android:layout_height="22dp"
+                    android:visibility="gone"
                     android:background="@drawable/home_logo" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat

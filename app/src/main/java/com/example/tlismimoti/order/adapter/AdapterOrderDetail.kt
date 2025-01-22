@@ -47,9 +47,9 @@ class AdapterOrderDetail(
 //
 //                }
                 binding.mainLayout.setOnClickListener {
-                    val intent = Intent(context as Activity, OrderDetails::class.java)
-                        .putExtra("id", list[position].id.toString())
-                    context.startActivity(intent)
+//                    val intent = Intent(context as Activity, OrderDetails::class.java)
+//                        .putExtra("id", list[position].id.toString())
+//                    context.startActivity(intent)
 
                 }
 

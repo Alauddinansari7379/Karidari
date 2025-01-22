@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/sf_medium"
-            android:text="FAVORITE OUTFITS"
+            android:text="FAVORITE"
             android:textColor="@color/dark_purple"
             android:textSize="12sp"
             android:textStyle="bold" />

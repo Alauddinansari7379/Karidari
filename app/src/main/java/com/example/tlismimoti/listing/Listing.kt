@@ -72,7 +72,7 @@ class Listing : AppCompatActivity() {
         apiCallCartProduct()
 
         with(binding){
-            imgBack.setOnClickListener {
+            btnBack.setOnClickListener {
                 onBackPressed()
             }
             // Assuming you have a NavController
