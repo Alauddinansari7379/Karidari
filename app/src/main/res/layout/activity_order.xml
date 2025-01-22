@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/sf_medium"
-            android:text="EDIT PROFILE"
+            android:text="Order List"
             android:textColor="@color/white"
             android:textSize="12sp"
             android:textStyle="bold" />

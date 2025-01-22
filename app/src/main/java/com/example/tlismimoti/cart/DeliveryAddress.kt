@@ -390,7 +390,7 @@ class DeliveryAddress : AppCompatActivity(), PaymentResultListener {
                                         position: Int,
                                         id: Long
                                     ) {
-                                        selectedState = list[position].name
+                                        selectedState = list[position].name.toString()
                                         val id = list[position].id
                                         apiCallGetCity(id.toString())
 
@@ -466,7 +466,7 @@ class DeliveryAddress : AppCompatActivity(), PaymentResultListener {
                                         position: Int,
                                         id: Long
                                     ) {
-                                        selectedCity = list[position].city
+                                        selectedCity = list[position].city.toString()
                                         // Handle the selected state id
                                         // Toast.makeText(context, "Selected State ID: $selectedStateId", Toast.LENGTH_SHORT).show()
                                     }

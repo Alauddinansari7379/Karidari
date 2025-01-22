@@ -64,7 +64,7 @@ class AccountFragment : Fragment() {
 
             if (sessionManager.userName!!.isNotEmpty()) {
                 tvFullName.text = sessionManager.userName
-                tvEmail.text = sessionManager.email
+                tvEmail.text = sessionManager.userEmail
             }
             layoutTransactionHistory.setOnClickListener {
                 if (sessionManager.authTokenUser!!.isEmpty()) {
