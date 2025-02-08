@@ -28,8 +28,9 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_centerHorizontal="true"
+                android:backgroundTint="@color/gray"
                 android:layout_marginTop="115dp"
-                android:src="@drawable/ic_person" />
+                android:background="@drawable/baseline_person_24" />
 
             <TextView
                 android:id="@+id/tvFullName"
@@ -101,9 +102,9 @@
                 <LinearLayout
                     android:id="@+id/layoutFavoriteOutfits"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="30dp"
                     android:layout_weight="1"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:paddingHorizontal="25dp">
@@ -136,7 +137,7 @@
                 <LinearLayout
                     android:id="@+id/layoutTransactionHistory"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="30dp"
                     android:layout_weight="1"
                     android:layout_marginTop="10dp"
                     android:gravity="center_vertical"
@@ -161,7 +162,7 @@
                 <LinearLayout
                     android:id="@+id/layoutSettings"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="30dp"
                     android:layout_weight="1"
                     android:layout_marginTop="10dp"
                     android:gravity="center_vertical"

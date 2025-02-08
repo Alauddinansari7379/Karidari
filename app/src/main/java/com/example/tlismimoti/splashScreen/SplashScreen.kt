@@ -41,7 +41,7 @@ class SplashScreen : AppCompatActivity() {
 
        // AppProgressBar.showLoaderDialog(this@SplashScreen)
         ApiClient.apiService.autologin(
-            "karidari.com",
+            "karidari.shop",
          ).enqueue(object :
             Callback<ModelLogin> {
             @SuppressLint("LogNotTimber", "LongLogTag")

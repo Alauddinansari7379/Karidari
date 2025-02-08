@@ -98,7 +98,7 @@
         android:layout_below="@id/toolbar"
         android:fontFamily="@font/sf_medium"
         android:gravity="center"
-        android:text="3 Items added"
+        android:text=" Items added"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold" />

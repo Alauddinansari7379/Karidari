@@ -60,7 +60,7 @@ class Settings : AppCompatActivity() {
 
             cardTerm.setOnClickListener {
                 val intent = Intent(Intent.ACTION_VIEW).apply {
-                    data = Uri.parse("https://karidari.com/page/privacy/1982")
+                    data = Uri.parse("https://karidari.shop/page/privacy/6375")
                 }
                 context.startActivity(intent)
             }

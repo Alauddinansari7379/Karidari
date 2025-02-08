@@ -8,7 +8,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object ApiClient {
-    private const val BASE_URL = "https://karidari.com/api/"
+    private const val BASE_URL = "https://karidari.shop/api/"
+//    private const val BASE_URL = "https://karidari.com/api/"
      private var retrofit: Retrofit? = null
     private val client: Retrofit?
         get() {
